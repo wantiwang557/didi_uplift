@@ -1,0 +1,117 @@
+{
+  "feature_conf": "/nfs/dataset-ofs-385-143496/yangliu/lite-fea-workspace/wwt/offline_bigdata/script/feature_confs/baseline/feature_baseline_train.conf",
+  "sql": "/nfs/dataset-ofs-385-143496/yangliu/lite-fea-workspace/wwt/offline_bigdata/script/sqls/baseline/feature_baseline_train.sql",
+  "feature_conf_slots": 609,
+  "groups": {
+    "sirius画像特征": {
+      "sql_columns": 194,
+      "matched_feature_slots": 194,
+      "missing_in_feature_conf": []
+    },
+    "补贴环境": {
+      "sql_columns": 24,
+      "matched_feature_slots": 24,
+      "missing_in_feature_conf": []
+    },
+    "双端特征": {
+      "sql_columns": 252,
+      "matched_feature_slots": 252,
+      "missing_in_feature_conf": []
+    },
+    "有端": {
+      "sql_columns": 2,
+      "matched_feature_slots": 2,
+      "missing_in_feature_conf": []
+    },
+    "券敏感": {
+      "sql_columns": 1,
+      "matched_feature_slots": 1,
+      "missing_in_feature_conf": []
+    },
+    "新版小天狼星用户订单信息特征": {
+      "sql_columns": 93,
+      "matched_feature_slots": 93,
+      "missing_in_feature_conf": []
+    },
+    "新版小天狼星用户基础属性特征": {
+      "sql_columns": 52,
+      "matched_feature_slots": 43,
+      "missing_in_feature_conf": [
+        "cost_7d",
+        "coupon_cost",
+        "dau_cnt",
+        "fake_treatment_id",
+        "flag",
+        "group_name_eve",
+        "label",
+        "label_dt",
+        "oneid"
+      ]
+    }
+  },
+  "schemes": {
+    "baseline": {
+      "groups": [
+        "sirius画像特征",
+        "补贴环境",
+        "双端特征",
+        "有端",
+        "券敏感"
+      ],
+      "sql_columns": 473,
+      "matched_feature_slots": 473,
+      "slot_file": "demo/feature_select/baseline_baseline.slots",
+      "missing_in_feature_conf": []
+    },
+    "no_sirius": {
+      "groups": [
+        "补贴环境",
+        "双端特征",
+        "有端",
+        "券敏感"
+      ],
+      "sql_columns": 279,
+      "matched_feature_slots": 279,
+      "slot_file": "demo/feature_select/baseline_no_sirius.slots",
+      "missing_in_feature_conf": []
+    },
+    "replace_sirius_with_xtlx_order": {
+      "groups": [
+        "补贴环境",
+        "双端特征",
+        "有端",
+        "券敏感",
+        "新版小天狼星用户订单信息特征"
+      ],
+      "sql_columns": 372,
+      "matched_feature_slots": 372,
+      "slot_file": "demo/feature_select/baseline_replace_sirius_with_xtlx_order.slots",
+      "missing_in_feature_conf": []
+    },
+    "all_superset": {
+      "groups": [
+        "sirius画像特征",
+        "补贴环境",
+        "双端特征",
+        "有端",
+        "券敏感",
+        "新版小天狼星用户订单信息特征",
+        "新版小天狼星用户基础属性特征"
+      ],
+      "sql_columns": 618,
+      "matched_feature_slots": 609,
+      "slot_file": "demo/feature_select/baseline_all_superset.slots",
+      "missing_in_feature_conf": [
+        "cost_7d",
+        "coupon_cost",
+        "dau_cnt",
+        "fake_treatment_id",
+        "flag",
+        "group_name_eve",
+        "label",
+        "label_dt",
+        "oneid"
+      ]
+    }
+  }
+}

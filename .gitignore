@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+
+__pycache__/
+*.py[cod]
+
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+*.log
+nohup.out
+run_logs/
+**/run_logs/
+
+*.swp
+tmp/

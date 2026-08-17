@@ -1,0 +1,847 @@
+
+-- 特征筛选：
+--【模型中使用】
+-- sirius画像特征
+-- 补贴环境
+-- 双端特征
+-- 有端
+-- 券敏感
+--【模型中未使用】
+-- 新版小天狼星用户订单信息特征
+-- 新版小天狼星用户基础属性特征
+
+
+select --/*+ REPARTITION(100) */
+    fin_order_wxmini_28d
+    ,group_name_eve
+    ,t.pid, t.oneid
+    ,send_cnt, send_success_cnt, send_cost, remind_cost, coupon_cost
+    ,dau_cnt
+    -- 设置label
+    ,finish_cnt_7d as label
+    --,cast((nvl(remind_cost, 0.0) +  nvl(coupon_cost, 0.0)) as double) as cost
+    ,cost_7d
+    ,case
+        when group_name_eve = '10元留存5张3' then 4
+        when group_name_eve = '留存6张5元' then 3
+        when group_name_eve = '8元留存5张3' then 2
+        when group_name_eve = '留存6张3元' then 1
+        when group_name_eve = 'control_group' then 0
+        else null
+    end as fake_treatment_id
+    ,'train' as flag
+    ,t.dt as label_dt
+    
+    -- sirius画像特征
+    ,sirius_city_id
+    ,dm_user_base_oneid_info_didi_silent_days
+    ,dm_user_base_oneid_info_didi_active_days
+    ,cast(dm_user_base_oneid_info_last_use_htm as int) as dm_user_base_oneid_info_last_use_htm
+    ,cast(dm_user_base_oneid_info_last_use_btls as int) as dm_user_base_oneid_info_last_use_btls
+    ,dm_user_base_oneid_info_car_days
+    ,case when dm_user_base_oneid_info_phone_os_type = 'ios' then 2
+        when dm_user_base_oneid_info_phone_os_type = 'android' then 1
+        else 0
+    end as dm_user_base_oneid_info_phone_os_type
+    ,cast(dm_user_base_oneid_info_phone_model as int) as dm_user_base_oneid_info_phone_model
+    ,dm_user_base_oneid_info_oneid_create_days
+    ,dm_user_base_oneid_info_oneid_openid_num
+    ,dm_user_base_oneid_info_oneid_record_num
+    ,cast(dm_user_base_oneid_info_oneid_has_rnid as int) as dm_user_base_oneid_info_oneid_has_rnid
+    ,cast(dm_user_base_oneid_info_oneid_status as int) as dm_user_base_oneid_info_oneid_status
+    ,cast(dm_user_vzt_pub_rfmpeat_flag as int) as dm_user_vzt_pub_rfmpeat_flag
+    ,dm_user_vzt_pub_rfmpeat_r_score
+    ,dm_user_vzt_pub_rfmpeat_f_score
+    ,dm_user_vzt_pub_rfmpeat_m_score
+    ,dm_user_vzt_pub_rfmpeat_p_score
+    ,dm_user_vzt_pub_rfmpeat_e_score
+    ,dm_user_vzt_pub_rfmpeat_a_score
+    ,dm_user_vzt_pub_rfmpeat_t_score
+    ,dm_user_vzt_pub_rfmpeat_synth_score
+    ,dm_user_vzt_pub_rfmpeat_r_rank
+    ,dm_user_vzt_pub_rfmpeat_f_rank
+    ,dm_user_vzt_pub_rfmpeat_m_rank
+    ,dm_user_vzt_pub_rfmpeat_p_rank
+    ,dm_user_vzt_pub_rfmpeat_e_rank
+    ,dm_user_vzt_pub_rfmpeat_a_rank
+    ,dm_user_vzt_pub_rfmpeat_t_rank
+    ,dm_user_vzt_pub_rfmpeat_ut_r
+    ,dm_user_vzt_pub_rfmpeat_ut_f
+    ,dm_user_vzt_pub_rfmpeat_ut_p
+    ,dm_user_vzt_pub_rfmpeat_ut_a
+    ,dm_user_vzt_pub_rfmpeat_ut_t
+    ,dm_user_vzt_pub_rfmpeat_ut_synth
+    ,dm_user_vzt_pub_rfmpeat_kflw_r
+    ,dm_user_vzt_pub_rfmpeat_kflw_f
+    ,dm_user_vzt_pub_rfmpeat_kflw_p
+    ,dm_user_vzt_pub_rfmpeat_kflw_a
+    ,dm_user_vzt_pub_rfmpeat_kflw_t
+    ,dm_user_vzt_pub_rfmpeat_kflw_synth
+    ,dm_user_vzt_pub_rfmpeat_taxi_r
+    ,dm_user_vzt_pub_rfmpeat_taxi_f
+    ,dm_user_vzt_pub_rfmpeat_taxi_m
+    ,dm_user_vzt_pub_rfmpeat_taxi_e
+    ,dm_user_vzt_pub_rfmpeat_taxi_a
+    ,dm_user_vzt_pub_rfmpeat_taxi_t
+    ,dm_user_vzt_pub_rfmpeat_taxi_synth
+    ,dm_user_vzt_pub_rfmpeat_netcar_r
+    ,dm_user_vzt_pub_rfmpeat_netcar_f
+    ,dm_user_vzt_pub_rfmpeat_netcar_m
+    ,dm_user_vzt_pub_rfmpeat_netcar_p
+    ,dm_user_vzt_pub_rfmpeat_netcar_e
+    ,dm_user_vzt_pub_rfmpeat_netcar_a
+    ,dm_user_vzt_pub_rfmpeat_netcar_t
+    ,dm_user_vzt_pub_rfmpeat_netcar_synth
+    ,dm_user_vzt_pub_rfmpeat_btls_r
+    ,dm_user_vzt_pub_rfmpeat_btls_f
+    ,dm_user_vzt_pub_rfmpeat_btls_m
+    ,dm_user_vzt_pub_rfmpeat_btls_p
+    ,dm_user_vzt_pub_rfmpeat_btls_e
+    ,dm_user_vzt_pub_rfmpeat_btls_a
+    ,dm_user_vzt_pub_rfmpeat_btls_t
+    ,dm_user_vzt_pub_rfmpeat_btls_synth
+    ,dm_user_vzt_pub_rfmpeat_htm_r
+    ,dm_user_vzt_pub_rfmpeat_htm_f
+    ,dm_user_vzt_pub_rfmpeat_htm_p
+    ,dm_user_vzt_pub_rfmpeat_htm_e
+    ,dm_user_vzt_pub_rfmpeat_htm_a
+    ,dm_user_vzt_pub_rfmpeat_htm_t
+    ,dm_user_vzt_pub_rfmpeat_htm_synth
+    ,dm_user_vzt_pub_rfmpeat_dj_r
+    ,dm_user_vzt_pub_rfmpeat_dj_f
+    ,dm_user_vzt_pub_rfmpeat_dj_m
+    ,dm_user_vzt_pub_rfmpeat_dj_p
+    ,dm_user_vzt_pub_rfmpeat_dj_e
+    ,dm_user_vzt_pub_rfmpeat_dj_a
+    ,dm_user_vzt_pub_rfmpeat_dj_t
+    ,dm_user_vzt_pub_rfmpeat_dj_synth
+    ,dm_user_vzt_pub_rfmpeat_other_r
+    ,dm_user_vzt_pub_rfmpeat_other_p
+    ,dm_user_vzt_pub_rfmpeat_other_a
+    ,dm_user_vzt_pub_rfmpeat_other_t
+    ,cast(dm_user_deal_pub_rfm_flag as int) as dm_user_deal_pub_rfm_flag
+    ,dm_user_deal_pub_rfm_r_score
+    ,dm_user_deal_pub_rfm_m_score
+    ,dm_user_deal_pub_rfm_r_rank
+    ,dm_user_deal_pub_rfm_f_rank
+    ,case when dm_user_deal_pub_rfm_rfm_importance = '重要' then 2
+        when dm_user_deal_pub_rfm_rfm_importance = '一般' then 1
+        else 0 
+    end as dm_user_deal_pub_rfm_rfm_importance
+    ,case when dm_user_deal_pub_rfm_rfm_value = '高价值' then 5
+        when dm_user_deal_pub_rfm_rfm_value = '发展' then 4
+        when dm_user_deal_pub_rfm_rfm_value = '保持' then 3
+        when dm_user_deal_pub_rfm_rfm_value = '挽留' then 2
+        else 1
+    end as dm_user_deal_pub_rfm_rfm_value
+    ,dm_user_deal_pub_rfm_first_pref_name
+    ,dm_user_deal_pub_rfm_first_pref_score
+    ,dm_user_deal_pub_rfm_second_pref_score
+    ,dm_user_deal_pub_rfm_netcar_f
+    ,dm_user_deal_pub_rfm_netcar_m
+    ,dm_user_deal_pub_rfm_netcar_rfm_score
+    ,dm_user_deal_pub_rfm_netcar_score_rank
+    ,dm_user_deal_pub_rfm_taxi_f
+    ,dm_user_deal_pub_rfm_taxi_m
+    ,dm_user_deal_pub_rfm_taxi_rfm_score
+    ,dm_user_deal_pub_rfm_taxi_score_rank
+    ,dm_user_deal_pub_rfm_btls_r
+    ,dm_user_deal_pub_rfm_btls_f
+    ,dm_user_deal_pub_rfm_btls_m
+    ,dm_user_deal_pub_rfm_btls_rfm_score
+    ,case when dm_user_deal_pub_rfm_btls_rfm_class = '重要高价值' then 9
+        when dm_user_deal_pub_rfm_btls_rfm_class = '重要发展' then 8
+        when dm_user_deal_pub_rfm_btls_rfm_class = '重要保持' then 7
+        when dm_user_deal_pub_rfm_btls_rfm_class = '重要挽留' then 6
+        when dm_user_deal_pub_rfm_btls_rfm_class = '一般高价值' then 5
+        when dm_user_deal_pub_rfm_btls_rfm_class = '一般发展' then 4
+        when dm_user_deal_pub_rfm_btls_rfm_class = '一般保持' then 3
+        when dm_user_deal_pub_rfm_btls_rfm_class = '一般挽留' then 2
+        else 1
+    end as dm_user_deal_pub_rfm_btls_rfm_class
+    ,dm_user_deal_pub_rfm_btls_score_rank
+    ,dm_user_deal_pub_rfm_htm_f
+    ,dm_user_deal_pub_rfm_htm_m
+    ,dm_user_deal_pub_rfm_htm_rfm_score
+    ,dm_user_deal_pub_rfm_bus_r
+    ,dm_user_deal_pub_rfm_bus_f
+    ,dm_user_deal_pub_rfm_bus_rfm_score
+    ,case when dm_user_deal_pub_rfm_bus_rfm_class = '一般高价值' then 5
+        when dm_user_deal_pub_rfm_bus_rfm_class = '一般发展' then 4
+        when dm_user_deal_pub_rfm_bus_rfm_class = '一般保持' then 3
+        when dm_user_deal_pub_rfm_bus_rfm_class = '一般挽留' then 2
+        else 1
+    end as dm_user_deal_pub_rfm_bus_rfm_class
+    ,dm_user_deal_pub_rfm_bus_score_rank
+    ,cast(dm_user_mkt_netcar_ordacc_flag as int) as dm_user_mkt_netcar_ordacc_flag
+    ,dm_user_mkt_netcar_ordacc_jie_call_decay
+    ,dm_user_mkt_netcar_ordacc_jie_finish_order_ratio
+    ,dm_user_mkt_netcar_ordacc_jie_last_second_call_day
+    ,dm_user_mkt_netcar_ordacc_jie_pay_finish_time_diff_max
+    ,dm_user_mkt_netcar_ordacc_jie_pay_finish_time_diff_mean
+    ,dm_user_mkt_netcar_ordacc_jie_spend_per_kilo_min
+    ,dm_user_mkt_netcar_ordacc_jie_actual_amt_max
+    ,dm_user_mkt_netcar_ordacc_jie_actual_amt_mean
+    ,dm_user_mkt_netcar_ordacc_jie_fee_diff_max
+    ,dm_user_mkt_netcar_ordacc_jie_fee_diff_mean
+    ,dm_user_mkt_netcar_ordacc_jie_subsidy_c_order_ratio
+    ,dm_user_mkt_netcar_ordacc_jie_subsidy_c_max
+    ,dm_user_mkt_netcar_ordacc_jie_subsidy_c_mean
+    ,dm_user_mkt_netcar_ordacc_jie_gmv_max
+    ,dm_user_mkt_netcar_ordacc_jie_gmv_mean
+    ,dm_user_mkt_netcar_ordacc_jie_real_time_order_charge_dis_max
+    ,dm_user_mkt_netcar_ordacc_jie_real_time_charge_dur_mean
+    ,dm_user_mkt_netcar_ordacc_jie_real_time_driver_wait_get_on_time_mean
+    ,dm_user_mkt_netcar_ordacc_jie_real_time_order_charge_dis_sub_mean
+    ,dm_user_mkt_netcar_ordacc_jie_real_time_start_distance_mean
+    ,dm_user_mkt_netcar_ordacc_jie_real_time_end_distance_mean
+    ,dm_user_mkt_netcar_ordacc_jie_real_time_answer_dur_mean
+    ,dm_user_mkt_netcar_ordacc_jie_interval_week_mean
+    ,dm_user_mkt_netcar_ordacc_gcsv2_recored_days
+    ,dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_subsidy_cnt
+    ,dm_user_mkt_netcar_ordacc_gcsv2_gmv_std
+    ,dm_user_mkt_netcar_ordacc_gcsv2_cost_mean
+    ,dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_subsidy_mean
+    ,dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_subsidy_std
+    ,dm_user_mkt_netcar_ordacc_gcsv2_subsidy_rate_mean
+    ,dm_user_mkt_netcar_ordacc_gcsv2_subsidy_rate_std
+    ,dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_no_subsidy_mean
+    ,dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_no_subsidy_std
+    ,dm_user_mkt_netcar_ordacc_gcsv2_subsidy_rate
+    ,dm_user_mkt_netcar_ordacc_gcsv2_wilson_left
+    ,dm_user_mkt_netcar_ordacc_gcsv2_wilson_right
+    ,cast(dm_user_mkt_netcar_ordacc_gcsv2_gcs_rank_level as int) as dm_user_mkt_netcar_ordacc_gcsv2_gcs_rank_level
+    ,cast(dm_user_behv_netcar_htpp_flag as int) as dm_user_behv_netcar_htpp_flag
+    ,dm_user_behv_netcar_htpp_pas2dri_prob
+    ,dm_user_behv_netcar_htpp_car_ewma
+    ,dm_user_behv_netcar_htpp_car_avg
+    ,dm_user_behv_netcar_htpp_car_d4
+    ,dm_user_behv_netcar_htpp_car_d3
+    ,dm_user_behv_netcar_htpp_car_d2
+    ,dm_user_behv_netcar_htpp_car_d1
+    ,cast(dm_user_behv_netcar_htpp_car_is_churn as int) as dm_user_behv_netcar_htpp_car_is_churn
+    ,dm_user_behv_netcar_htpp_taxi_score
+    ,dm_user_behv_netcar_htpp_kflw_score
+    ,dm_user_behv_netcar_htpp_fast_score
+    ,dm_user_behv_netcar_htpp_aplus_score
+    ,dm_user_behv_netcar_htpp_tehui_score
+    ,dm_user_behv_netcar_htpp_pc_score
+    ,dm_user_behv_netcar_htpp_uber_score
+    ,dm_user_behv_netcar_htpp_gulf_score
+    ,dm_user_behv_netcar_htpp_luxr_score
+    ,dm_user_behv_netcar_htpp_yc_score
+    ,dm_user_behv_netcar_htpp_first_pd_score
+    ,dm_user_behv_netcar_htpp_second_pd_score
+    ,dm_user_behv_netcar_htpp_low_price
+    ,dm_user_behv_netcar_htpp_up_price
+    ,case when dm_user_behv_netcar_htpp_d7_desc = 'climb' then 3
+        when dm_user_behv_netcar_htpp_d7_desc = 'stable' then 2
+        when dm_user_behv_netcar_htpp_d7_desc = 'drop' then 1
+        else 0 
+    end as dm_user_behv_netcar_htpp_d7_desc
+    ,dm_user_behv_netcar_htpp_d30_call_rank
+    ,dm_user_behv_netcar_htpp_d90_call_rank
+    ,dm_user_behv_netcar_htpp_d180_call_rank
+    ,dm_user_behv_netcar_htpp_d370_call_rank
+    ,dm_user_behv_netcar_htpp_prefer_hour
+    ,cast(dm_user_mkt_biz_abst_flag as int) as dm_user_mkt_biz_abst_flag
+    ,dm_user_mkt_biz_abst_hy_amt_mean
+    ,dm_user_mkt_biz_abst_hy_car_types_divg
+    ,cast(dm_user_mkt_biz_abst_htm_hm_used as int) as dm_user_mkt_biz_abst_htm_hm_used
+    ,dm_user_mkt_biz_abst_netcar_call_finish_ratio
+    ,dm_user_mkt_biz_abst_netcar_call_time_divg
+    ,dm_user_mkt_biz_abst_netcar_start_grid_divg
+    ,dm_user_mkt_biz_abst_netcar_end_grid_divg
+    ,dm_user_mkt_biz_abst_netcar_dist_types_divg
+    ,dm_user_mkt_biz_abst_netcar_pd_ctgs_divg
+    ,cast(dm_user_mkt_biz_abst_netcar_agency_used as int) as dm_user_mkt_biz_abst_netcar_agency_used
+    ,cast(dm_user_mkt_biz_abst_netcar_appt_used as int) as dm_user_mkt_biz_abst_netcar_appt_used
+        
+    -- 补贴环境
+    ,user_pref_weekend_prefer_score
+    ,user_base_home_company_distance
+    ,case when user_pref_prefer_end = 'native' then 3
+        when user_pref_prefer_end = 'mini' then 2
+        when user_pref_prefer_end = 'uncertain' then 1
+        else 0
+    end as user_pref_prefer_end
+    ,user_behv_mixin_native_pct
+    ,user_behv_mixin_mini_pct
+    ,user_behv_native_pct
+    ,user_behv_mini_pct
+    ,user_behv_native_pct_91d
+    ,user_behv_mini_pct_91d
+    ,user_behv_g_cnt
+    ,user_behv_g_native_cnt
+    ,user_behv_g_mini_cnt
+    ,user_behv_cnt_91d
+    ,user_behv_native_cnt_91d
+    ,user_behv_mini_cnt_91d
+    ,user_behv_coupon_spend_cn
+    ,user_behv_coupon_spend_ratio
+    ,user_behv_coupon_coupon_cn
+    ,user_behv_coupon_max_amount
+    ,user_behv_coupon_amount_span
+    ,user_behv_coupon_min_discount
+    ,user_behv_coupon_discount_span
+    ,user_behv_avg_bubble_dist
+    ,user_behv_min_bubble_dist
+
+    -- 双端特征
+    ,app_dau_label_1d
+    ,app_bubble_num_1d
+    ,app_call_order_num_1d
+    ,app_finish_order_num_1d
+    ,app_bubble_dis_max_1d
+    ,app_bubble_dis_min_1d
+    ,app_bubble_dis_avg_1d
+    ,app_order_dis_max_1d
+    ,app_order_dis_min_1d
+    ,app_order_dis_avg_1d
+    ,app_coupon_count_1d
+    ,app_coupon_amount_1d
+    ,app_coupon_cost_1d
+    ,app_bubble_rate_1d
+    ,app_call_order_rate_1d
+    ,app_finish_order_rate_1d
+    ,app_coupon_order_rate_1d
+    ,app_coupon_cost_order_rate_1d
+    ,xcx_dau_label_1d
+    ,xcx_bubble_num_1d
+    ,xcx_call_order_num_1d
+    ,xcx_finish_order_num_1d
+    ,xcx_bubble_dis_max_1d
+    ,xcx_bubble_dis_min_1d
+    ,xcx_bubble_dis_avg_1d
+    ,xcx_order_dis_max_1d
+    ,xcx_order_dis_min_1d
+    ,xcx_order_dis_avg_1d
+    ,xcx_coupon_count_1d
+    ,xcx_coupon_amount_1d
+    ,xcx_coupon_cost_1d
+    ,xcx_bubble_rate_1d
+    ,xcx_call_order_rate_1d
+    ,xcx_finish_order_rate_1d
+    ,xcx_coupon_order_rate_1d
+    ,xcx_coupon_cost_order_rate_1d
+    ,app_dau_label_7d
+    ,app_bubble_num_7d
+    ,app_call_order_num_7d
+    ,app_finish_order_num_7d
+    ,app_bubble_dis_max_7d
+    ,app_bubble_dis_min_7d
+    ,app_bubble_dis_avg_7d
+    ,app_order_dis_max_7d
+    ,app_order_dis_min_7d
+    ,app_order_dis_avg_7d
+    ,app_coupon_count_7d
+    ,app_coupon_amount_7d
+    ,app_coupon_cost_7d
+    ,app_bubble_rate_7d
+    ,app_call_order_rate_7d
+    ,app_finish_order_rate_7d
+    ,app_coupon_order_rate_7d
+    ,app_coupon_cost_order_rate_7d
+    ,xcx_dau_label_7d
+    ,xcx_bubble_num_7d
+    ,xcx_call_order_num_7d
+    ,xcx_finish_order_num_7d
+    ,xcx_bubble_dis_max_7d
+    ,xcx_bubble_dis_min_7d
+    ,xcx_bubble_dis_avg_7d
+    ,xcx_order_dis_max_7d
+    ,xcx_order_dis_min_7d
+    ,xcx_order_dis_avg_7d
+    ,xcx_coupon_count_7d
+    ,xcx_coupon_amount_7d
+    ,xcx_coupon_cost_7d
+    ,xcx_bubble_rate_7d
+    ,xcx_call_order_rate_7d
+    ,xcx_finish_order_rate_7d
+    ,xcx_coupon_order_rate_7d
+    ,xcx_coupon_cost_order_rate_7d
+    ,app_dau_label_14d
+    ,app_bubble_num_14d
+    ,app_call_order_num_14d
+    ,app_finish_order_num_14d
+    ,app_bubble_dis_max_14d
+    ,app_bubble_dis_min_14d
+    ,app_bubble_dis_avg_14d
+    ,app_order_dis_max_14d
+    ,app_order_dis_min_14d
+    ,app_order_dis_avg_14d
+    ,app_coupon_count_14d
+    ,app_coupon_amount_14d
+    ,app_coupon_cost_14d
+    ,app_bubble_rate_14d
+    ,app_call_order_rate_14d
+    ,app_finish_order_rate_14d
+    ,app_coupon_order_rate_14d
+    ,app_coupon_cost_order_rate_14d
+    ,xcx_dau_label_14d
+    ,xcx_bubble_num_14d
+    ,xcx_call_order_num_14d
+    ,xcx_finish_order_num_14d
+    ,xcx_bubble_dis_max_14d
+    ,xcx_bubble_dis_min_14d
+    ,xcx_bubble_dis_avg_14d
+    ,xcx_order_dis_max_14d
+    ,xcx_order_dis_min_14d
+    ,xcx_order_dis_avg_14d
+    ,xcx_coupon_count_14d
+    ,xcx_coupon_amount_14d
+    ,xcx_coupon_cost_14d
+    ,xcx_bubble_rate_14d
+    ,xcx_call_order_rate_14d
+    ,xcx_finish_order_rate_14d
+    ,xcx_coupon_order_rate_14d
+    ,xcx_coupon_cost_order_rate_14d
+    ,app_dau_label_28d
+    ,app_bubble_num_28d
+    ,app_call_order_num_28d
+    ,app_finish_order_num_28d
+    ,app_bubble_dis_max_28d
+    ,app_bubble_dis_min_28d
+    ,app_bubble_dis_avg_28d
+    ,app_order_dis_max_28d
+    ,app_order_dis_min_28d
+    ,app_order_dis_avg_28d
+    ,app_coupon_count_28d
+    ,app_coupon_amount_28d
+    ,app_coupon_cost_28d
+    ,app_bubble_rate_28d
+    ,app_call_order_rate_28d
+    ,app_finish_order_rate_28d
+    ,app_coupon_order_rate_28d
+    ,app_coupon_cost_order_rate_28d
+    ,xcx_dau_label_28d
+    ,xcx_bubble_num_28d
+    ,xcx_call_order_num_28d
+    ,xcx_finish_order_num_28d
+    ,xcx_bubble_dis_max_28d
+    ,xcx_bubble_dis_min_28d
+    ,xcx_bubble_dis_avg_28d
+    ,xcx_order_dis_max_28d
+    ,xcx_order_dis_min_28d
+    ,xcx_order_dis_avg_28d
+    ,xcx_coupon_count_28d
+    ,xcx_coupon_amount_28d
+    ,xcx_coupon_cost_28d
+    ,xcx_bubble_rate_28d
+    ,xcx_call_order_rate_28d
+    ,xcx_finish_order_rate_28d
+    ,xcx_coupon_order_rate_28d
+    ,xcx_coupon_cost_order_rate_28d
+    ,app_dau_label_60d
+    ,app_bubble_num_60d
+    ,app_call_order_num_60d
+    ,app_finish_order_num_60d
+    ,app_bubble_dis_max_60d
+    ,app_bubble_dis_min_60d
+    ,app_bubble_dis_avg_60d
+    ,app_order_dis_max_60d
+    ,app_order_dis_min_60d
+    ,app_order_dis_avg_60d
+    ,app_coupon_count_60d
+    ,app_coupon_amount_60d
+    ,app_coupon_cost_60d
+    ,app_bubble_rate_60d
+    ,app_call_order_rate_60d
+    ,app_finish_order_rate_60d
+    ,app_coupon_order_rate_60d
+    ,app_coupon_cost_order_rate_60d
+    ,xcx_dau_label_60d
+    ,xcx_bubble_num_60d
+    ,xcx_call_order_num_60d
+    ,xcx_finish_order_num_60d
+    ,xcx_bubble_dis_max_60d
+    ,xcx_bubble_dis_min_60d
+    ,xcx_bubble_dis_avg_60d
+    ,xcx_order_dis_max_60d
+    ,xcx_order_dis_min_60d
+    ,xcx_order_dis_avg_60d
+    ,xcx_coupon_count_60d
+    ,xcx_coupon_amount_60d
+    ,xcx_coupon_cost_60d
+    ,xcx_bubble_rate_60d
+    ,xcx_call_order_rate_60d
+    ,xcx_finish_order_rate_60d
+    ,xcx_coupon_order_rate_60d
+    ,xcx_coupon_cost_order_rate_60d
+    ,app_dau_label_120d
+    ,app_bubble_num_120d
+    ,app_call_order_num_120d
+    ,app_finish_order_num_120d
+    ,app_bubble_dis_max_120d
+    ,app_bubble_dis_min_120d
+    ,app_bubble_dis_avg_120d
+    ,app_order_dis_max_120d
+    ,app_order_dis_min_120d
+    ,app_order_dis_avg_120d
+    ,app_coupon_count_120d
+    ,app_coupon_amount_120d
+    ,app_coupon_cost_120d
+    ,app_bubble_rate_120d
+    ,app_call_order_rate_120d
+    ,app_finish_order_rate_120d
+    ,app_coupon_order_rate_120d
+    ,app_coupon_cost_order_rate_120d
+    ,xcx_dau_label_120d
+    ,xcx_bubble_num_120d
+    ,xcx_call_order_num_120d
+    ,xcx_finish_order_num_120d
+    ,xcx_bubble_dis_max_120d
+    ,xcx_bubble_dis_min_120d
+    ,xcx_bubble_dis_avg_120d
+    ,xcx_order_dis_max_120d
+    ,xcx_order_dis_min_120d
+    ,xcx_order_dis_avg_120d
+    ,xcx_coupon_count_120d
+    ,xcx_coupon_amount_120d
+    ,xcx_coupon_cost_120d
+    ,xcx_bubble_rate_120d
+    ,xcx_call_order_rate_120d
+    ,xcx_finish_order_rate_120d
+    ,xcx_coupon_order_rate_120d
+    ,xcx_coupon_cost_order_rate_120d
+    ,app_dau_label_180d
+    ,app_bubble_num_180d
+    ,app_call_order_num_180d
+    ,app_finish_order_num_180d
+    ,app_bubble_dis_max_180d
+    ,app_bubble_dis_min_180d
+    ,app_bubble_dis_avg_180d
+    ,app_order_dis_max_180d
+    ,app_order_dis_min_180d
+    ,app_order_dis_avg_180d
+    ,app_coupon_count_180d
+    ,app_coupon_amount_180d
+    ,app_coupon_cost_180d
+    ,app_bubble_rate_180d
+    ,app_call_order_rate_180d
+    ,app_finish_order_rate_180d
+    ,app_coupon_order_rate_180d
+    ,app_coupon_cost_order_rate_180d
+    ,xcx_dau_label_180d
+    ,xcx_bubble_num_180d
+    ,xcx_call_order_num_180d
+    ,xcx_finish_order_num_180d
+    ,xcx_bubble_dis_max_180d
+    ,xcx_bubble_dis_min_180d
+    ,xcx_bubble_dis_avg_180d
+    ,xcx_order_dis_max_180d
+    ,xcx_order_dis_min_180d
+    ,xcx_order_dis_avg_180d
+    ,xcx_coupon_count_180d
+    ,xcx_coupon_amount_180d
+    ,xcx_coupon_cost_180d
+    ,xcx_bubble_rate_180d
+    ,xcx_call_order_rate_180d
+    ,xcx_finish_order_rate_180d
+    ,xcx_coupon_order_rate_180d
+    ,xcx_coupon_cost_order_rate_180d
+
+    -- 有端
+    ,clue_score
+    ,clue_score_rank
+    
+    -- 券敏感
+    ,coupon_sensitive
+    
+    -- 新版小天狼星用户订单信息特征
+    ,call_cnt
+    ,cancel_cnt
+    ,cancel_rate
+    ,order_cnt
+    ,workday_cnt
+    ,weekend_cnt
+    ,ent_order_rate
+    ,call_0_6
+    ,call_6_10
+    ,call_10_14
+    ,call_14_18
+    ,call_18_24
+    ,avg_answer_interval
+    ,max_answer_interval
+    ,min_answer_interval
+    ,avg_arrive_interval
+    ,max_arrive_interval
+    ,min_arrive_interval
+    ,max_gmv
+    ,min_gmv
+    ,total_gmv
+    ,cross_city_cnt
+    ,offsite_cnt
+    ,longdis_cnt
+    ,coupon_cnt
+    ,coupon_rate
+    ,total_coupon_amt
+    ,c_subsidy_rate
+    ,top_scene_l1
+    ,top_scene_l2
+    ,top_start_city_id
+    ,top_dest_city_id
+    ,top_select_type
+    ,w_order_cnt
+    ,w_order_ratio
+    ,w_total_gmv
+    ,w_avg_gmv
+    ,w_total_dis
+    ,w_avg_dis
+    ,w_coupon_rate
+    ,w_c_subsidy_rate
+    ,w_top_call_period
+    ,w_top_scene_l1
+    ,c_order_cnt
+    ,c_order_ratio
+    ,c_total_gmv
+    ,c_avg_gmv
+    ,c_total_dis
+    ,c_avg_dis
+    ,c_coupon_rate
+    ,c_c_subsidy_rate
+    ,c_top_call_period
+    ,c_top_scene_l1
+    ,h_order_cnt
+    ,h_order_ratio
+    ,h_total_gmv
+    ,h_avg_gmv
+    ,h_total_dis
+    ,h_avg_dis
+    ,h_coupon_rate
+    ,h_c_subsidy_rate
+    ,h_top_call_period
+    ,h_top_scene_l1
+    ,s_order_cnt
+    ,s_order_ratio
+    ,s_total_gmv
+    ,s_avg_gmv
+    ,s_total_dis
+    ,s_avg_dis
+    ,s_coupon_rate
+    ,s_c_subsidy_rate
+    ,s_top_call_period
+    ,s_top_scene_l1
+    ,psg_charge_dist_m_stability
+    ,gmv_amt_stability
+    ,coupon_amt_stability
+    ,call_period_entropy_score
+    ,is_weekend_entropy_score
+    ,scene_l1_idx_entropy_score
+    ,scene_l2_idx_entropy_score
+    ,r
+    ,f
+    ,m
+    ,rfm_score
+    ,is_use_coupon_score
+    ,coupon_amt_score
+    ,gmv_amt_score
+    ,cross_city_prefer_wyc
+    ,cross_city_prefer_wchs
+    ,longj_prefer_wyc
+    ,longj_prefer_wchs
+    ,offsite_prefer_wyc
+    ,offsite_prefer_wchs
+
+    -- 新版小天狼星用户基础属性特征
+
+    ,ct_time
+    ,reg_days
+    ,ttt.gender
+    ,ttt.age
+    ,ttt.resident_city_id
+    ,ttt.is_exact_has_car
+    ,ttt.fuel_type
+    ,ttt.driving_age
+    ,ttt.car_brand
+    ,ttt.car_model_name
+    ,ttt.car_price
+    ,ttt.is_netcar_finish_driver
+    ,ttt.is_beatles_finish_driver
+    ,ttt.gt_career
+    ,ttt.gt_career_type
+    ,ttt.gt_muying
+    ,ttt.gt_shanglv
+    ,ttt.is_driver
+    ,ttt.member_level
+    ,ttt.natural_member_level
+    ,ttt.artificial_member_level
+    ,ttt.mp_last_visit_time
+    ,ttt.mp_is_7d_dau
+    ,ttt.mp_is_30d_dau
+    ,ttt.mp_is_90d_dau
+    ,ttt.mp_is_180d_dau
+    ,ttt.app_last_visit_time
+    ,ttt.is_app_7d_dau
+    ,ttt.is_app_30d_dau
+    ,ttt.is_app_90d_dau
+    ,ttt.is_app_180d_dau
+    ,ttt.app_avg_7d_active_days
+    ,ttt.app_preferred_time_period
+    ,ttt.app_work_rest_preference
+    ,ttt.app_continuity
+    ,ttt.app_cv_score
+    ,ttt.app_stable_score
+    ,ttt.mp_avg_7d_active_days
+    ,ttt.mp_preferred_time_period
+    ,ttt.mp_work_rest_preference
+    ,ttt.mp_continuity
+    ,ttt.mp_cv_score
+    ,ttt.mp_stable_score
+
+    -- 券核销特征
+    ,coupon_spend.recent_coupon_spend_cnt_7d
+    ,coupon_spend.recent_coupon_spend_cnt_14d
+    ,coupon_spend.recent_coupon_spend_cnt_28d
+    ,coupon_spend.recent_coupon_spend_cnt_60d
+    ,coupon_spend.recent_coupon_spend_ord_ratio_7d
+    ,coupon_spend.recent_coupon_spend_ord_ratio_14d
+    ,coupon_spend.recent_coupon_spend_ord_ratio_28d
+    ,coupon_spend.recent_coupon_spend_ord_ratio_60d
+    ,coupon_spend.recent_coupon_spend_days
+    ,coupon_spend.min_coupon_spend_7d
+    ,coupon_spend.min_coupon_spend_14d
+    ,coupon_spend.min_coupon_spend_28d
+    ,coupon_spend.min_coupon_spend_60d
+    ,coupon_spend.max_coupon_spend_7d
+    ,coupon_spend.max_coupon_spend_14d
+    ,coupon_spend.max_coupon_spend_28d
+    ,coupon_spend.max_coupon_spend_60d
+    ,coupon_spend.avg_coupon_spend_7d
+    ,coupon_spend.avg_coupon_spend_14d
+    ,coupon_spend.avg_coupon_spend_28d
+    ,coupon_spend.acg_coupon_spend_60d
+    ,coupon_spend.total_coupon_spend_7d
+    ,coupon_spend.total_coupon_spend_14d
+    ,coupon_spend.total_coupon_spend_28d
+    ,coupon_spend.total_coupon_spend_60d
+
+    -- 券绑定特征
+    ,coupon_bind.recent_bind_cnt_7d
+    ,coupon_bind.recent_bind_cnt_14d
+    ,coupon_bind.recent_bind_cnt_28d
+    ,coupon_bind.recent_bind_cnt_60d
+    ,coupon_bind.recent_bind_days
+    ,coupon_bind.valid_coupon_cnt
+    ,coupon_bind.max_valid_coupon_amount
+    ,coupon_bind.min_valid_coupon_amount
+    ,coupon_bind.avg_valid_coupon_amount
+from
+(
+    select t1.*, finish_cnt_7d, cost_7d, sum(finish_cnt_7d) over(partition by t1.pid) as finish_all_cnt
+    from
+    (
+        select 
+            *
+        from dm.ut_alg_flowback_msg_outcall_feature_train_di
+        where 
+            -- dt between date_sub('${BIZ_DATE_LINE}', 20) and date_sub('${BIZ_DATE_LINE}', 7)
+            dt between '2026-05-11' and '2026-06-17'
+            -- dt between '2026-05-26' and '2026-06-08' 
+            and dt >= '2026-03-02'
+            and dt not in ('2026-03-26','2026-03-27','2026-04-08')
+            -- dt between '2026-01-28' and date_sub('${BIZ_DATE_LINE}', 1)
+            -- dt between '2026-01-28' and '2026-02-11'
+            and new_exp = '迭代流量'
+            and ((group_name_eve in ('留存6张5元', '留存6张3元', '8元留存5张3', '10元留存5张3')) or (flowtree_group_name = 'DS空白' and group_name_eve = 'control_group'))
+        
+    ) t1
+    join 
+    (
+        select 
+            flowtree_group_name, group_name_eve, dt, pid, finish_cnt_7d
+            ,cast((nvl(send_cost, 0.0) + nvl(send_remind_cost, 0.0)+ nvl(outcall_cost, 0.0)+ nvl(remind_cost, 0.0)+ nvl(msg_coupon_cost_7d, 0.0)+ nvl(outcall_coupon_cost_7d, 0.0)+ nvl(outcall_coupon2_cost_7d, 0.0)) as double) as cost_7d
+        from dm.ut_alg_flowback_msg_outcall_label_di
+        where 
+            -- dt between date_sub('${BIZ_DATE_LINE}', 20) and date_sub('${BIZ_DATE_LINE}', 7)
+            -- dt between '2026-05-26' and '2026-06-08' 
+            dt between '2026-05-11' and '2026-06-17'
+            and dt >= '2026-03-02'
+            and dt not in ('2026-03-26','2026-03-27','2026-04-08')
+            -- dt between '2026-01-28' and date_sub('${BIZ_DATE_LINE}', 1)
+            -- dt between '2026-01-28' and '2026-02-11'
+            and new_exp = '迭代流量'
+            and ((group_name_eve in ('留存6张5元', '留存6张3元', '8元留存5张3', '10元留存5张3')) or (flowtree_group_name = 'DS空白' and group_name_eve = 'control_group'))
+        
+    )t
+    on t1.flowtree_group_name = t.flowtree_group_name
+    and t1.group_name_eve = t.group_name_eve
+    and t1.dt = t.dt
+    and t1.pid = t.pid
+) t
+left join 
+(
+    select 
+        *
+    from dm.xtlx_wchs_test_v1
+    where 
+       -- dt between '2026-05-25' and '2026-06-07'
+        dt between '2026-05-10' and '2026-06-16' 
+) tt
+on t.pid = tt.passenger_id and t.dt = date_add(tt.dt,1)
+left join 
+(
+    select 
+        *
+    from dm.xtlx_user_test_v1
+    where 
+       -- dt between '2026-05-25' and '2026-06-07' 
+       dt between '2026-05-10' and '2026-06-16' 
+) ttt 
+on t.pid = ttt.pid and t.dt = date_add(ttt.dt,1)
+left join
+(
+    select
+        passenger_id
+        ,dt
+        ,recent_coupon_spend_cnt_7d
+        ,recent_coupon_spend_cnt_14d
+        ,recent_coupon_spend_cnt_28d
+        ,recent_coupon_spend_cnt_60d
+        ,recent_coupon_spend_ord_ratio_7d
+        ,recent_coupon_spend_ord_ratio_14d
+        ,recent_coupon_spend_ord_ratio_28d
+        ,recent_coupon_spend_ord_ratio_60d
+        ,recent_coupon_spend_days
+        ,min_coupon_spend_7d
+        ,min_coupon_spend_14d
+        ,min_coupon_spend_28d
+        ,min_coupon_spend_60d
+        ,max_coupon_spend_7d
+        ,max_coupon_spend_14d
+        ,max_coupon_spend_28d
+        ,max_coupon_spend_60d
+        ,avg_coupon_spend_7d
+        ,avg_coupon_spend_14d
+        ,avg_coupon_spend_28d
+        ,acg_coupon_spend_60d
+        ,total_coupon_spend_7d
+        ,total_coupon_spend_14d
+        ,total_coupon_spend_28d
+        ,total_coupon_spend_60d
+    from dm.ut_fe_user_coupon_spend_info_di
+    where
+        dt between '2026-05-10' and '2026-06-16'
+) coupon_spend
+on t.pid = coupon_spend.passenger_id and t.dt = date_add(coupon_spend.dt,1)
+left join
+(
+    select
+        passenger_id
+        ,dt
+        ,recent_bind_cnt_7d
+        ,recent_bind_cnt_14d
+        ,recent_bind_cnt_28d
+        ,recent_bind_cnt_60d
+        ,recent_bind_days
+        ,valid_coupon_cnt
+        ,max_valid_coupon_amount
+        ,min_valid_coupon_amount
+        ,avg_valid_coupon_amount
+    from dm.ut_fe_user_coupon_bind_info_di
+    where
+        dt between '2026-05-10' and '2026-06-16'
+) coupon_bind
+on t.pid = coupon_bind.passenger_id and t.dt = date_add(coupon_bind.dt,1)
+where 
+    (finish_all_cnt > 0 and finish_cnt_7d > 0) or (finish_all_cnt = 0)

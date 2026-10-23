@@ -1,0 +1,41 @@
+{
+  "profile": "v6_dfcl_mt",
+  "status": "sql_generated_not_executed",
+  "splits": {
+    "train": [
+      "2026-07-16",
+      "2026-08-21"
+    ],
+    "valid": [
+      "2026-08-22",
+      "2026-08-27"
+    ],
+    "test": [
+      "2026-08-28",
+      "2026-09-10"
+    ]
+  },
+  "settings": {
+    "failed_gap_days": 28,
+    "excluded_dates": "'2026-03-26', '2026-03-27', '2026-04-08', '2026-08-02', '2026-08-08', '2026-08-09'",
+    "date_scope": "same_as_each_v6_split"
+  },
+  "feature_count": 473,
+  "token_count": 15,
+  "source_sql_sha256": {
+    "offline_bigdata/script/sqls/v6/feature_v6_train.sql": "fd9f576d74d9307c89c7a6efefd601f66c7d644f39f688bf3c810b3612e54d49",
+    "offline_bigdata/script/sqls/v6/feature_v6_valid.sql": "f4cd323c916720bfbb569fcdda225ceb33d885849840fbf8dedc9434594a6caa",
+    "offline_bigdata/script/sqls/v6/feature_v6_test.sql": "ffdf10c5254707ab9cb6a07b629d4c7184a18022b517f6ad700bec62d3019d30"
+  },
+  "propensity": "not embedded; verify experiment assignment probabilities separately",
+  "generated_sha256": {
+    "audit_multi_positive_success_details.sql": "26129df049791aa8f8a0cc305c15de28d78734b8fd2e1e37cf966f83b5d17510",
+    "audit_multi_positive_success_summary.sql": "13a92d4afe31454d54f3acb4ab8126e839f375dc27e87de30657d16b7ccb100c",
+    "audit_samples.sql": "45d7c81d47902438c2f57941b200f42e22a1101ff4a8835144d6aa247539ddc6",
+    "audit_zero_success_then_next_positive.sql": "275997ca395af02b8e1d1b2f1e39dbd519ad1e1dc37b3e563a6907fc00e7edc4",
+    "feature_v6_dfcl_mt_test.sql": "cf376a7aff907403a2dc0181762ab4c70e9ca31bbd687b1e60400240e957b677",
+    "feature_v6_dfcl_mt_train.sql": "a626ee509a714eb66afb60307e73f1f5f32b350f146e14e18211c65d8d99acca",
+    "feature_v6_dfcl_mt_valid.sql": "51d8ebac5d42c63610637367197dbc576af78d77d45b797409f8b1d457897323",
+    "selection_ctes.sql": "93fcf00af651492cfe514738771ef3adc702804eebd1ed715058a56370318f93"
+  }
+}

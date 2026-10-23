@@ -1,0 +1,11 @@
+{
+  "hdfs_root": "/user/prod_growstrategy/tmp/wwt/skill_datasets",
+  "queue": "root.growstrategy_group_prod",
+  "user_name": "prod_growstrategy",
+  "python": "python3",
+  "python_archives": "hdfs://difed/user/dm/ENV/dlflow/v2/py3.7.15_for_tfcluster.tgz",
+  "python_executor": "./py3.7.15_for_tfcluster.tgz/py3.7.15_for_tfcluster/bin/python3",
+  "jars": "hdfs://difed/user/dm/ENV/jars/spark_tfrecord/compile/spark-tfrecord-0.5.1_scala2.12-spark3.2.0-tfhp1.15.0.jar",
+  "label_available_through": null,
+  "partitions": 100
+}

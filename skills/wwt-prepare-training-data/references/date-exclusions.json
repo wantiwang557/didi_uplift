@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "rules": [
+    {
+      "id": "exclude_2026-03-26",
+      "start": "2026-03-26",
+      "end": "2026-03-27",
+      "basis": "sample_date",
+      "profile": "euen_v6",
+      "splits": [
+        "train",
+        "valid",
+        "test"
+      ],
+      "reason": "历史 SQL 排除，具体线上故障原因待补充",
+      "evidence": "offline_bigdata/script/sqls/v5/feature_v5_train.sql"
+    },
+    {
+      "id": "exclude_2026-04-08",
+      "start": "2026-04-08",
+      "end": "2026-04-08",
+      "basis": "sample_date",
+      "profile": "euen_v6",
+      "splits": [
+        "train",
+        "valid",
+        "test"
+      ],
+      "reason": "历史 SQL 排除，具体线上故障原因待补充",
+      "evidence": "offline_bigdata/script/sqls/v5/feature_v5_train.sql"
+    },
+    {
+      "id": "exclude_2026-06-18",
+      "start": "2026-06-18",
+      "end": "2026-06-22",
+      "basis": "sample_date",
+      "profile": "euen_v6",
+      "splits": [
+        "train",
+        "valid",
+        "test"
+      ],
+      "reason": "历史 SQL 排除，具体线上故障原因待补充",
+      "evidence": "offline_bigdata/script/sqls/v5/feature_v5_train.sql"
+    },
+    {
+      "id": "exclude_2026-08-02",
+      "start": "2026-08-02",
+      "end": "2026-08-02",
+      "basis": "sample_date",
+      "profile": "euen_v6",
+      "splits": [
+        "train",
+        "valid",
+        "test"
+      ],
+      "reason": "历史 SQL 排除，具体线上故障原因待补充",
+      "evidence": "offline_bigdata/script/sqls/v5/feature_v5_train.sql"
+    },
+    {
+      "id": "exclude_2026-08-08",
+      "start": "2026-08-08",
+      "end": "2026-08-09",
+      "basis": "sample_date",
+      "profile": "euen_v6",
+      "splits": [
+        "train",
+        "valid",
+        "test"
+      ],
+      "reason": "历史 SQL 排除，具体线上故障原因待补充",
+      "evidence": "offline_bigdata/script/sqls/v5/feature_v5_train.sql"
+    }
+  ]
+}

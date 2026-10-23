@@ -1,0 +1,3745 @@
+{
+  "schema_version": 1,
+  "profile": "euen_v6",
+  "blocks": [
+    {
+      "id": "sirius",
+      "name": "sirius画像特征",
+      "aliases": [],
+      "source_table": "dm.ut_alg_flowback_msg_outcall_feature_train_di",
+      "source_evidence": "offline_bigdata/script/sqls/v6/feature_v6_train.sql",
+      "lineage_status": "直接来源已核实；上游生产口径及历史可用范围待核实",
+      "snapshot_offset_days": 0,
+      "fields": [
+        {
+          "name": "sirius_city_id",
+          "expression": "t.sirius_city_id",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_didi_silent_days",
+          "expression": "t.dm_user_base_oneid_info_didi_silent_days",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_didi_active_days",
+          "expression": "t.dm_user_base_oneid_info_didi_active_days",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_last_use_htm",
+          "expression": "cast(dm_user_base_oneid_info_last_use_htm as int) as dm_user_base_oneid_info_last_use_htm",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_last_use_btls",
+          "expression": "cast(dm_user_base_oneid_info_last_use_btls as int) as dm_user_base_oneid_info_last_use_btls",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_car_days",
+          "expression": "t.dm_user_base_oneid_info_car_days",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_phone_os_type",
+          "expression": "case when dm_user_base_oneid_info_phone_os_type = 'ios' then 2\n        when dm_user_base_oneid_info_phone_os_type = 'android' then 1\n        else 0\n    end as dm_user_base_oneid_info_phone_os_type",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_phone_model",
+          "expression": "cast(dm_user_base_oneid_info_phone_model as int) as dm_user_base_oneid_info_phone_model",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_oneid_create_days",
+          "expression": "t.dm_user_base_oneid_info_oneid_create_days",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_oneid_openid_num",
+          "expression": "t.dm_user_base_oneid_info_oneid_openid_num",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_oneid_record_num",
+          "expression": "t.dm_user_base_oneid_info_oneid_record_num",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_oneid_has_rnid",
+          "expression": "cast(dm_user_base_oneid_info_oneid_has_rnid as int) as dm_user_base_oneid_info_oneid_has_rnid",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_base_oneid_info_oneid_status",
+          "expression": "cast(dm_user_base_oneid_info_oneid_status as int) as dm_user_base_oneid_info_oneid_status",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_flag",
+          "expression": "cast(dm_user_vzt_pub_rfmpeat_flag as int) as dm_user_vzt_pub_rfmpeat_flag",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_r_score",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_r_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_f_score",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_f_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_m_score",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_m_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_p_score",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_p_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_e_score",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_e_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_a_score",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_a_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_t_score",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_t_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_synth_score",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_synth_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_r_rank",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_r_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_f_rank",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_f_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_m_rank",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_m_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_p_rank",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_p_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_e_rank",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_e_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_a_rank",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_a_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_t_rank",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_t_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_ut_r",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_ut_r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_ut_f",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_ut_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_ut_p",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_ut_p",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_ut_a",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_ut_a",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_ut_t",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_ut_t",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_ut_synth",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_ut_synth",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_kflw_r",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_kflw_r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_kflw_f",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_kflw_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_kflw_p",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_kflw_p",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_kflw_a",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_kflw_a",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_kflw_t",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_kflw_t",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_kflw_synth",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_kflw_synth",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_taxi_r",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_taxi_r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_taxi_f",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_taxi_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_taxi_m",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_taxi_m",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_taxi_e",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_taxi_e",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_taxi_a",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_taxi_a",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_taxi_t",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_taxi_t",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_taxi_synth",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_taxi_synth",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_netcar_r",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_netcar_r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_netcar_f",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_netcar_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_netcar_m",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_netcar_m",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_netcar_p",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_netcar_p",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_netcar_e",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_netcar_e",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_netcar_a",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_netcar_a",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_netcar_t",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_netcar_t",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_netcar_synth",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_netcar_synth",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_btls_r",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_btls_r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_btls_f",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_btls_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_btls_m",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_btls_m",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_btls_p",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_btls_p",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_btls_e",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_btls_e",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_btls_a",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_btls_a",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_btls_t",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_btls_t",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_btls_synth",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_btls_synth",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_htm_r",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_htm_r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_htm_f",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_htm_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_htm_p",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_htm_p",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_htm_e",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_htm_e",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_htm_a",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_htm_a",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_htm_t",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_htm_t",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_htm_synth",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_htm_synth",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_dj_r",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_dj_r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_dj_f",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_dj_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_dj_m",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_dj_m",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_dj_p",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_dj_p",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_dj_e",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_dj_e",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_dj_a",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_dj_a",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_dj_t",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_dj_t",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_dj_synth",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_dj_synth",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_other_r",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_other_r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_other_p",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_other_p",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_other_a",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_other_a",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_vzt_pub_rfmpeat_other_t",
+          "expression": "t.dm_user_vzt_pub_rfmpeat_other_t",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_flag",
+          "expression": "cast(dm_user_deal_pub_rfm_flag as int) as dm_user_deal_pub_rfm_flag",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_r_score",
+          "expression": "t.dm_user_deal_pub_rfm_r_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_m_score",
+          "expression": "t.dm_user_deal_pub_rfm_m_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_r_rank",
+          "expression": "t.dm_user_deal_pub_rfm_r_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_f_rank",
+          "expression": "t.dm_user_deal_pub_rfm_f_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_rfm_importance",
+          "expression": "case when dm_user_deal_pub_rfm_rfm_importance = '重要' then 2\n        when dm_user_deal_pub_rfm_rfm_importance = '一般' then 1\n        else 0 \n    end as dm_user_deal_pub_rfm_rfm_importance",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_rfm_value",
+          "expression": "case when dm_user_deal_pub_rfm_rfm_value = '高价值' then 5\n        when dm_user_deal_pub_rfm_rfm_value = '发展' then 4\n        when dm_user_deal_pub_rfm_rfm_value = '保持' then 3\n        when dm_user_deal_pub_rfm_rfm_value = '挽留' then 2\n        else 1\n    end as dm_user_deal_pub_rfm_rfm_value",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_first_pref_name",
+          "expression": "t.dm_user_deal_pub_rfm_first_pref_name",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_first_pref_score",
+          "expression": "t.dm_user_deal_pub_rfm_first_pref_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_second_pref_score",
+          "expression": "t.dm_user_deal_pub_rfm_second_pref_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_netcar_f",
+          "expression": "t.dm_user_deal_pub_rfm_netcar_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_netcar_m",
+          "expression": "t.dm_user_deal_pub_rfm_netcar_m",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_netcar_rfm_score",
+          "expression": "t.dm_user_deal_pub_rfm_netcar_rfm_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_netcar_score_rank",
+          "expression": "t.dm_user_deal_pub_rfm_netcar_score_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_taxi_f",
+          "expression": "t.dm_user_deal_pub_rfm_taxi_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_taxi_m",
+          "expression": "t.dm_user_deal_pub_rfm_taxi_m",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_taxi_rfm_score",
+          "expression": "t.dm_user_deal_pub_rfm_taxi_rfm_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_taxi_score_rank",
+          "expression": "t.dm_user_deal_pub_rfm_taxi_score_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_btls_r",
+          "expression": "t.dm_user_deal_pub_rfm_btls_r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_btls_f",
+          "expression": "t.dm_user_deal_pub_rfm_btls_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_btls_m",
+          "expression": "t.dm_user_deal_pub_rfm_btls_m",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_btls_rfm_score",
+          "expression": "t.dm_user_deal_pub_rfm_btls_rfm_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_btls_rfm_class",
+          "expression": "case when dm_user_deal_pub_rfm_btls_rfm_class = '重要高价值' then 9\n        when dm_user_deal_pub_rfm_btls_rfm_class = '重要发展' then 8\n        when dm_user_deal_pub_rfm_btls_rfm_class = '重要保持' then 7\n        when dm_user_deal_pub_rfm_btls_rfm_class = '重要挽留' then 6\n        when dm_user_deal_pub_rfm_btls_rfm_class = '一般高价值' then 5\n        when dm_user_deal_pub_rfm_btls_rfm_class = '一般发展' then 4\n        when dm_user_deal_pub_rfm_btls_rfm_class = '一般保持' then 3\n        when dm_user_deal_pub_rfm_btls_rfm_class = '一般挽留' then 2\n        else 1\n    end as dm_user_deal_pub_rfm_btls_rfm_class",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_btls_score_rank",
+          "expression": "t.dm_user_deal_pub_rfm_btls_score_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_htm_f",
+          "expression": "t.dm_user_deal_pub_rfm_htm_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_htm_m",
+          "expression": "t.dm_user_deal_pub_rfm_htm_m",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_htm_rfm_score",
+          "expression": "t.dm_user_deal_pub_rfm_htm_rfm_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_bus_r",
+          "expression": "t.dm_user_deal_pub_rfm_bus_r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_bus_f",
+          "expression": "t.dm_user_deal_pub_rfm_bus_f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_bus_rfm_score",
+          "expression": "t.dm_user_deal_pub_rfm_bus_rfm_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_bus_rfm_class",
+          "expression": "case when dm_user_deal_pub_rfm_bus_rfm_class = '一般高价值' then 5\n        when dm_user_deal_pub_rfm_bus_rfm_class = '一般发展' then 4\n        when dm_user_deal_pub_rfm_bus_rfm_class = '一般保持' then 3\n        when dm_user_deal_pub_rfm_bus_rfm_class = '一般挽留' then 2\n        else 1\n    end as dm_user_deal_pub_rfm_bus_rfm_class",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_deal_pub_rfm_bus_score_rank",
+          "expression": "t.dm_user_deal_pub_rfm_bus_score_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_flag",
+          "expression": "cast(dm_user_mkt_netcar_ordacc_flag as int) as dm_user_mkt_netcar_ordacc_flag",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_call_decay",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_call_decay",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_finish_order_ratio",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_finish_order_ratio",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_last_second_call_day",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_last_second_call_day",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_pay_finish_time_diff_max",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_pay_finish_time_diff_max",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_pay_finish_time_diff_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_pay_finish_time_diff_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_spend_per_kilo_min",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_spend_per_kilo_min",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_actual_amt_max",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_actual_amt_max",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_actual_amt_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_actual_amt_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_fee_diff_max",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_fee_diff_max",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_fee_diff_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_fee_diff_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_subsidy_c_order_ratio",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_subsidy_c_order_ratio",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_subsidy_c_max",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_subsidy_c_max",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_subsidy_c_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_subsidy_c_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_gmv_max",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_gmv_max",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_gmv_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_gmv_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_real_time_order_charge_dis_max",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_real_time_order_charge_dis_max",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_real_time_charge_dur_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_real_time_charge_dur_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_real_time_driver_wait_get_on_time_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_real_time_driver_wait_get_on_time_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_real_time_order_charge_dis_sub_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_real_time_order_charge_dis_sub_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_real_time_start_distance_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_real_time_start_distance_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_real_time_end_distance_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_real_time_end_distance_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_real_time_answer_dur_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_real_time_answer_dur_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_jie_interval_week_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_jie_interval_week_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_recored_days",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_recored_days",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_subsidy_cnt",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_subsidy_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_gmv_std",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_gmv_std",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_cost_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_cost_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_subsidy_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_subsidy_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_subsidy_std",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_subsidy_std",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_subsidy_rate_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_subsidy_rate_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_subsidy_rate_std",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_subsidy_rate_std",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_no_subsidy_mean",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_no_subsidy_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_no_subsidy_std",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_gmv_with_no_subsidy_std",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_subsidy_rate",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_subsidy_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_wilson_left",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_wilson_left",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_wilson_right",
+          "expression": "t.dm_user_mkt_netcar_ordacc_gcsv2_wilson_right",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_netcar_ordacc_gcsv2_gcs_rank_level",
+          "expression": "cast(dm_user_mkt_netcar_ordacc_gcsv2_gcs_rank_level as int) as dm_user_mkt_netcar_ordacc_gcsv2_gcs_rank_level",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_flag",
+          "expression": "cast(dm_user_behv_netcar_htpp_flag as int) as dm_user_behv_netcar_htpp_flag",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_pas2dri_prob",
+          "expression": "t.dm_user_behv_netcar_htpp_pas2dri_prob",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_car_ewma",
+          "expression": "t.dm_user_behv_netcar_htpp_car_ewma",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_car_avg",
+          "expression": "t.dm_user_behv_netcar_htpp_car_avg",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_car_d4",
+          "expression": "t.dm_user_behv_netcar_htpp_car_d4",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_car_d3",
+          "expression": "t.dm_user_behv_netcar_htpp_car_d3",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_car_d2",
+          "expression": "t.dm_user_behv_netcar_htpp_car_d2",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_car_d1",
+          "expression": "t.dm_user_behv_netcar_htpp_car_d1",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_car_is_churn",
+          "expression": "cast(dm_user_behv_netcar_htpp_car_is_churn as int) as dm_user_behv_netcar_htpp_car_is_churn",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_taxi_score",
+          "expression": "t.dm_user_behv_netcar_htpp_taxi_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_kflw_score",
+          "expression": "t.dm_user_behv_netcar_htpp_kflw_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_fast_score",
+          "expression": "t.dm_user_behv_netcar_htpp_fast_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_aplus_score",
+          "expression": "t.dm_user_behv_netcar_htpp_aplus_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_tehui_score",
+          "expression": "t.dm_user_behv_netcar_htpp_tehui_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_pc_score",
+          "expression": "t.dm_user_behv_netcar_htpp_pc_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_uber_score",
+          "expression": "t.dm_user_behv_netcar_htpp_uber_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_gulf_score",
+          "expression": "t.dm_user_behv_netcar_htpp_gulf_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_luxr_score",
+          "expression": "t.dm_user_behv_netcar_htpp_luxr_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_yc_score",
+          "expression": "t.dm_user_behv_netcar_htpp_yc_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_first_pd_score",
+          "expression": "t.dm_user_behv_netcar_htpp_first_pd_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_second_pd_score",
+          "expression": "t.dm_user_behv_netcar_htpp_second_pd_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_low_price",
+          "expression": "t.dm_user_behv_netcar_htpp_low_price",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_up_price",
+          "expression": "t.dm_user_behv_netcar_htpp_up_price",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_d7_desc",
+          "expression": "case when dm_user_behv_netcar_htpp_d7_desc = 'climb' then 3\n        when dm_user_behv_netcar_htpp_d7_desc = 'stable' then 2\n        when dm_user_behv_netcar_htpp_d7_desc = 'drop' then 1\n        else 0 \n    end as dm_user_behv_netcar_htpp_d7_desc",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_d30_call_rank",
+          "expression": "t.dm_user_behv_netcar_htpp_d30_call_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_d90_call_rank",
+          "expression": "t.dm_user_behv_netcar_htpp_d90_call_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_d180_call_rank",
+          "expression": "t.dm_user_behv_netcar_htpp_d180_call_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_d370_call_rank",
+          "expression": "t.dm_user_behv_netcar_htpp_d370_call_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_behv_netcar_htpp_prefer_hour",
+          "expression": "t.dm_user_behv_netcar_htpp_prefer_hour",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_flag",
+          "expression": "cast(dm_user_mkt_biz_abst_flag as int) as dm_user_mkt_biz_abst_flag",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_hy_amt_mean",
+          "expression": "t.dm_user_mkt_biz_abst_hy_amt_mean",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_hy_car_types_divg",
+          "expression": "t.dm_user_mkt_biz_abst_hy_car_types_divg",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_htm_hm_used",
+          "expression": "cast(dm_user_mkt_biz_abst_htm_hm_used as int) as dm_user_mkt_biz_abst_htm_hm_used",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_netcar_call_finish_ratio",
+          "expression": "t.dm_user_mkt_biz_abst_netcar_call_finish_ratio",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_netcar_call_time_divg",
+          "expression": "t.dm_user_mkt_biz_abst_netcar_call_time_divg",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_netcar_start_grid_divg",
+          "expression": "t.dm_user_mkt_biz_abst_netcar_start_grid_divg",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_netcar_end_grid_divg",
+          "expression": "t.dm_user_mkt_biz_abst_netcar_end_grid_divg",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_netcar_dist_types_divg",
+          "expression": "t.dm_user_mkt_biz_abst_netcar_dist_types_divg",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_netcar_pd_ctgs_divg",
+          "expression": "t.dm_user_mkt_biz_abst_netcar_pd_ctgs_divg",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_netcar_agency_used",
+          "expression": "cast(dm_user_mkt_biz_abst_netcar_agency_used as int) as dm_user_mkt_biz_abst_netcar_agency_used",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "dm_user_mkt_biz_abst_netcar_appt_used",
+          "expression": "cast(dm_user_mkt_biz_abst_netcar_appt_used as int) as dm_user_mkt_biz_abst_netcar_appt_used",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        }
+      ]
+    },
+    {
+      "id": "subsidy",
+      "name": "补贴环境",
+      "aliases": [],
+      "source_table": "dm.ut_alg_flowback_msg_outcall_feature_train_di",
+      "source_evidence": "offline_bigdata/script/sqls/v6/feature_v6_train.sql",
+      "lineage_status": "直接来源已核实；上游生产口径及历史可用范围待核实",
+      "snapshot_offset_days": 0,
+      "fields": [
+        {
+          "name": "user_pref_weekend_prefer_score",
+          "expression": "t.user_pref_weekend_prefer_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_base_home_company_distance",
+          "expression": "t.user_base_home_company_distance",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_pref_prefer_end",
+          "expression": "case when user_pref_prefer_end = 'native' then 3\n        when user_pref_prefer_end = 'mini' then 2\n        when user_pref_prefer_end = 'uncertain' then 1\n        else 0\n    end as user_pref_prefer_end",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_mixin_native_pct",
+          "expression": "t.user_behv_mixin_native_pct",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_mixin_mini_pct",
+          "expression": "t.user_behv_mixin_mini_pct",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_native_pct",
+          "expression": "t.user_behv_native_pct",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_mini_pct",
+          "expression": "t.user_behv_mini_pct",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_native_pct_91d",
+          "expression": "t.user_behv_native_pct_91d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_mini_pct_91d",
+          "expression": "t.user_behv_mini_pct_91d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_g_cnt",
+          "expression": "t.user_behv_g_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_g_native_cnt",
+          "expression": "t.user_behv_g_native_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_g_mini_cnt",
+          "expression": "t.user_behv_g_mini_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_cnt_91d",
+          "expression": "t.user_behv_cnt_91d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_native_cnt_91d",
+          "expression": "t.user_behv_native_cnt_91d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_mini_cnt_91d",
+          "expression": "t.user_behv_mini_cnt_91d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_coupon_spend_cn",
+          "expression": "t.user_behv_coupon_spend_cn",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_coupon_spend_ratio",
+          "expression": "t.user_behv_coupon_spend_ratio",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_coupon_coupon_cn",
+          "expression": "t.user_behv_coupon_coupon_cn",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_coupon_max_amount",
+          "expression": "t.user_behv_coupon_max_amount",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_coupon_amount_span",
+          "expression": "t.user_behv_coupon_amount_span",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_coupon_min_discount",
+          "expression": "t.user_behv_coupon_min_discount",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_coupon_discount_span",
+          "expression": "t.user_behv_coupon_discount_span",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_avg_bubble_dist",
+          "expression": "t.user_behv_avg_bubble_dist",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "user_behv_min_bubble_dist",
+          "expression": "t.user_behv_min_bubble_dist",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        }
+      ]
+    },
+    {
+      "id": "dual_client",
+      "name": "双端特征",
+      "aliases": [],
+      "source_table": "dm.ut_alg_flowback_msg_outcall_feature_train_di",
+      "source_evidence": "offline_bigdata/script/sqls/v6/feature_v6_train.sql",
+      "lineage_status": "直接来源已核实；上游生产口径及历史可用范围待核实",
+      "snapshot_offset_days": 0,
+      "fields": [
+        {
+          "name": "app_dau_label_1d",
+          "expression": "t.app_dau_label_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_num_1d",
+          "expression": "t.app_bubble_num_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_num_1d",
+          "expression": "t.app_call_order_num_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_num_1d",
+          "expression": "t.app_finish_order_num_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_max_1d",
+          "expression": "t.app_bubble_dis_max_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_min_1d",
+          "expression": "t.app_bubble_dis_min_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_avg_1d",
+          "expression": "t.app_bubble_dis_avg_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_max_1d",
+          "expression": "t.app_order_dis_max_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_min_1d",
+          "expression": "t.app_order_dis_min_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_avg_1d",
+          "expression": "t.app_order_dis_avg_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_count_1d",
+          "expression": "t.app_coupon_count_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_amount_1d",
+          "expression": "t.app_coupon_amount_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_1d",
+          "expression": "t.app_coupon_cost_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_rate_1d",
+          "expression": "t.app_bubble_rate_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_rate_1d",
+          "expression": "t.app_call_order_rate_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_rate_1d",
+          "expression": "t.app_finish_order_rate_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_order_rate_1d",
+          "expression": "t.app_coupon_order_rate_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_order_rate_1d",
+          "expression": "t.app_coupon_cost_order_rate_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_dau_label_1d",
+          "expression": "t.xcx_dau_label_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_num_1d",
+          "expression": "t.xcx_bubble_num_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_num_1d",
+          "expression": "t.xcx_call_order_num_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_num_1d",
+          "expression": "t.xcx_finish_order_num_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_max_1d",
+          "expression": "t.xcx_bubble_dis_max_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_min_1d",
+          "expression": "t.xcx_bubble_dis_min_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_avg_1d",
+          "expression": "t.xcx_bubble_dis_avg_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_max_1d",
+          "expression": "t.xcx_order_dis_max_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_min_1d",
+          "expression": "t.xcx_order_dis_min_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_avg_1d",
+          "expression": "t.xcx_order_dis_avg_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_count_1d",
+          "expression": "t.xcx_coupon_count_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_amount_1d",
+          "expression": "t.xcx_coupon_amount_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_1d",
+          "expression": "t.xcx_coupon_cost_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_rate_1d",
+          "expression": "t.xcx_bubble_rate_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_rate_1d",
+          "expression": "t.xcx_call_order_rate_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_rate_1d",
+          "expression": "t.xcx_finish_order_rate_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_order_rate_1d",
+          "expression": "t.xcx_coupon_order_rate_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_order_rate_1d",
+          "expression": "t.xcx_coupon_cost_order_rate_1d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_dau_label_7d",
+          "expression": "t.app_dau_label_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_num_7d",
+          "expression": "t.app_bubble_num_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_num_7d",
+          "expression": "t.app_call_order_num_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_num_7d",
+          "expression": "t.app_finish_order_num_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_max_7d",
+          "expression": "t.app_bubble_dis_max_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_min_7d",
+          "expression": "t.app_bubble_dis_min_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_avg_7d",
+          "expression": "t.app_bubble_dis_avg_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_max_7d",
+          "expression": "t.app_order_dis_max_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_min_7d",
+          "expression": "t.app_order_dis_min_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_avg_7d",
+          "expression": "t.app_order_dis_avg_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_count_7d",
+          "expression": "t.app_coupon_count_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_amount_7d",
+          "expression": "t.app_coupon_amount_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_7d",
+          "expression": "t.app_coupon_cost_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_rate_7d",
+          "expression": "t.app_bubble_rate_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_rate_7d",
+          "expression": "t.app_call_order_rate_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_rate_7d",
+          "expression": "t.app_finish_order_rate_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_order_rate_7d",
+          "expression": "t.app_coupon_order_rate_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_order_rate_7d",
+          "expression": "t.app_coupon_cost_order_rate_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_dau_label_7d",
+          "expression": "t.xcx_dau_label_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_num_7d",
+          "expression": "t.xcx_bubble_num_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_num_7d",
+          "expression": "t.xcx_call_order_num_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_num_7d",
+          "expression": "t.xcx_finish_order_num_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_max_7d",
+          "expression": "t.xcx_bubble_dis_max_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_min_7d",
+          "expression": "t.xcx_bubble_dis_min_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_avg_7d",
+          "expression": "t.xcx_bubble_dis_avg_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_max_7d",
+          "expression": "t.xcx_order_dis_max_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_min_7d",
+          "expression": "t.xcx_order_dis_min_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_avg_7d",
+          "expression": "t.xcx_order_dis_avg_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_count_7d",
+          "expression": "t.xcx_coupon_count_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_amount_7d",
+          "expression": "t.xcx_coupon_amount_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_7d",
+          "expression": "t.xcx_coupon_cost_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_rate_7d",
+          "expression": "t.xcx_bubble_rate_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_rate_7d",
+          "expression": "t.xcx_call_order_rate_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_rate_7d",
+          "expression": "t.xcx_finish_order_rate_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_order_rate_7d",
+          "expression": "t.xcx_coupon_order_rate_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_order_rate_7d",
+          "expression": "t.xcx_coupon_cost_order_rate_7d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_dau_label_14d",
+          "expression": "t.app_dau_label_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_num_14d",
+          "expression": "t.app_bubble_num_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_num_14d",
+          "expression": "t.app_call_order_num_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_num_14d",
+          "expression": "t.app_finish_order_num_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_max_14d",
+          "expression": "t.app_bubble_dis_max_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_min_14d",
+          "expression": "t.app_bubble_dis_min_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_avg_14d",
+          "expression": "t.app_bubble_dis_avg_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_max_14d",
+          "expression": "t.app_order_dis_max_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_min_14d",
+          "expression": "t.app_order_dis_min_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_avg_14d",
+          "expression": "t.app_order_dis_avg_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_count_14d",
+          "expression": "t.app_coupon_count_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_amount_14d",
+          "expression": "t.app_coupon_amount_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_14d",
+          "expression": "t.app_coupon_cost_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_rate_14d",
+          "expression": "t.app_bubble_rate_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_rate_14d",
+          "expression": "t.app_call_order_rate_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_rate_14d",
+          "expression": "t.app_finish_order_rate_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_order_rate_14d",
+          "expression": "t.app_coupon_order_rate_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_order_rate_14d",
+          "expression": "t.app_coupon_cost_order_rate_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_dau_label_14d",
+          "expression": "t.xcx_dau_label_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_num_14d",
+          "expression": "t.xcx_bubble_num_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_num_14d",
+          "expression": "t.xcx_call_order_num_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_num_14d",
+          "expression": "t.xcx_finish_order_num_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_max_14d",
+          "expression": "t.xcx_bubble_dis_max_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_min_14d",
+          "expression": "t.xcx_bubble_dis_min_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_avg_14d",
+          "expression": "t.xcx_bubble_dis_avg_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_max_14d",
+          "expression": "t.xcx_order_dis_max_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_min_14d",
+          "expression": "t.xcx_order_dis_min_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_avg_14d",
+          "expression": "t.xcx_order_dis_avg_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_count_14d",
+          "expression": "t.xcx_coupon_count_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_amount_14d",
+          "expression": "t.xcx_coupon_amount_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_14d",
+          "expression": "t.xcx_coupon_cost_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_rate_14d",
+          "expression": "t.xcx_bubble_rate_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_rate_14d",
+          "expression": "t.xcx_call_order_rate_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_rate_14d",
+          "expression": "t.xcx_finish_order_rate_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_order_rate_14d",
+          "expression": "t.xcx_coupon_order_rate_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_order_rate_14d",
+          "expression": "t.xcx_coupon_cost_order_rate_14d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_dau_label_28d",
+          "expression": "t.app_dau_label_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_num_28d",
+          "expression": "t.app_bubble_num_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_num_28d",
+          "expression": "t.app_call_order_num_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_num_28d",
+          "expression": "t.app_finish_order_num_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_max_28d",
+          "expression": "t.app_bubble_dis_max_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_min_28d",
+          "expression": "t.app_bubble_dis_min_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_avg_28d",
+          "expression": "t.app_bubble_dis_avg_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_max_28d",
+          "expression": "t.app_order_dis_max_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_min_28d",
+          "expression": "t.app_order_dis_min_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_avg_28d",
+          "expression": "t.app_order_dis_avg_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_count_28d",
+          "expression": "t.app_coupon_count_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_amount_28d",
+          "expression": "t.app_coupon_amount_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_28d",
+          "expression": "t.app_coupon_cost_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_rate_28d",
+          "expression": "t.app_bubble_rate_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_rate_28d",
+          "expression": "t.app_call_order_rate_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_rate_28d",
+          "expression": "t.app_finish_order_rate_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_order_rate_28d",
+          "expression": "t.app_coupon_order_rate_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_order_rate_28d",
+          "expression": "t.app_coupon_cost_order_rate_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_dau_label_28d",
+          "expression": "t.xcx_dau_label_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_num_28d",
+          "expression": "t.xcx_bubble_num_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_num_28d",
+          "expression": "t.xcx_call_order_num_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_num_28d",
+          "expression": "t.xcx_finish_order_num_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_max_28d",
+          "expression": "t.xcx_bubble_dis_max_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_min_28d",
+          "expression": "t.xcx_bubble_dis_min_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_avg_28d",
+          "expression": "t.xcx_bubble_dis_avg_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_max_28d",
+          "expression": "t.xcx_order_dis_max_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_min_28d",
+          "expression": "t.xcx_order_dis_min_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_avg_28d",
+          "expression": "t.xcx_order_dis_avg_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_count_28d",
+          "expression": "t.xcx_coupon_count_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_amount_28d",
+          "expression": "t.xcx_coupon_amount_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_28d",
+          "expression": "t.xcx_coupon_cost_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_rate_28d",
+          "expression": "t.xcx_bubble_rate_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_rate_28d",
+          "expression": "t.xcx_call_order_rate_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_rate_28d",
+          "expression": "t.xcx_finish_order_rate_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_order_rate_28d",
+          "expression": "t.xcx_coupon_order_rate_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_order_rate_28d",
+          "expression": "t.xcx_coupon_cost_order_rate_28d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_dau_label_60d",
+          "expression": "t.app_dau_label_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_num_60d",
+          "expression": "t.app_bubble_num_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_num_60d",
+          "expression": "t.app_call_order_num_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_num_60d",
+          "expression": "t.app_finish_order_num_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_max_60d",
+          "expression": "t.app_bubble_dis_max_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_min_60d",
+          "expression": "t.app_bubble_dis_min_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_avg_60d",
+          "expression": "t.app_bubble_dis_avg_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_max_60d",
+          "expression": "t.app_order_dis_max_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_min_60d",
+          "expression": "t.app_order_dis_min_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_avg_60d",
+          "expression": "t.app_order_dis_avg_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_count_60d",
+          "expression": "t.app_coupon_count_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_amount_60d",
+          "expression": "t.app_coupon_amount_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_60d",
+          "expression": "t.app_coupon_cost_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_rate_60d",
+          "expression": "t.app_bubble_rate_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_rate_60d",
+          "expression": "t.app_call_order_rate_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_rate_60d",
+          "expression": "t.app_finish_order_rate_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_order_rate_60d",
+          "expression": "t.app_coupon_order_rate_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_order_rate_60d",
+          "expression": "t.app_coupon_cost_order_rate_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_dau_label_60d",
+          "expression": "t.xcx_dau_label_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_num_60d",
+          "expression": "t.xcx_bubble_num_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_num_60d",
+          "expression": "t.xcx_call_order_num_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_num_60d",
+          "expression": "t.xcx_finish_order_num_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_max_60d",
+          "expression": "t.xcx_bubble_dis_max_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_min_60d",
+          "expression": "t.xcx_bubble_dis_min_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_avg_60d",
+          "expression": "t.xcx_bubble_dis_avg_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_max_60d",
+          "expression": "t.xcx_order_dis_max_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_min_60d",
+          "expression": "t.xcx_order_dis_min_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_avg_60d",
+          "expression": "t.xcx_order_dis_avg_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_count_60d",
+          "expression": "t.xcx_coupon_count_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_amount_60d",
+          "expression": "t.xcx_coupon_amount_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_60d",
+          "expression": "t.xcx_coupon_cost_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_rate_60d",
+          "expression": "t.xcx_bubble_rate_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_rate_60d",
+          "expression": "t.xcx_call_order_rate_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_rate_60d",
+          "expression": "t.xcx_finish_order_rate_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_order_rate_60d",
+          "expression": "t.xcx_coupon_order_rate_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_order_rate_60d",
+          "expression": "t.xcx_coupon_cost_order_rate_60d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_dau_label_120d",
+          "expression": "t.app_dau_label_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_num_120d",
+          "expression": "t.app_bubble_num_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_num_120d",
+          "expression": "t.app_call_order_num_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_num_120d",
+          "expression": "t.app_finish_order_num_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_max_120d",
+          "expression": "t.app_bubble_dis_max_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_min_120d",
+          "expression": "t.app_bubble_dis_min_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_avg_120d",
+          "expression": "t.app_bubble_dis_avg_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_max_120d",
+          "expression": "t.app_order_dis_max_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_min_120d",
+          "expression": "t.app_order_dis_min_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_avg_120d",
+          "expression": "t.app_order_dis_avg_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_count_120d",
+          "expression": "t.app_coupon_count_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_amount_120d",
+          "expression": "t.app_coupon_amount_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_120d",
+          "expression": "t.app_coupon_cost_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_rate_120d",
+          "expression": "t.app_bubble_rate_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_rate_120d",
+          "expression": "t.app_call_order_rate_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_rate_120d",
+          "expression": "t.app_finish_order_rate_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_order_rate_120d",
+          "expression": "t.app_coupon_order_rate_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_order_rate_120d",
+          "expression": "t.app_coupon_cost_order_rate_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_dau_label_120d",
+          "expression": "t.xcx_dau_label_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_num_120d",
+          "expression": "t.xcx_bubble_num_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_num_120d",
+          "expression": "t.xcx_call_order_num_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_num_120d",
+          "expression": "t.xcx_finish_order_num_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_max_120d",
+          "expression": "t.xcx_bubble_dis_max_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_min_120d",
+          "expression": "t.xcx_bubble_dis_min_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_avg_120d",
+          "expression": "t.xcx_bubble_dis_avg_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_max_120d",
+          "expression": "t.xcx_order_dis_max_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_min_120d",
+          "expression": "t.xcx_order_dis_min_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_avg_120d",
+          "expression": "t.xcx_order_dis_avg_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_count_120d",
+          "expression": "t.xcx_coupon_count_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_amount_120d",
+          "expression": "t.xcx_coupon_amount_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_120d",
+          "expression": "t.xcx_coupon_cost_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_rate_120d",
+          "expression": "t.xcx_bubble_rate_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_rate_120d",
+          "expression": "t.xcx_call_order_rate_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_rate_120d",
+          "expression": "t.xcx_finish_order_rate_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_order_rate_120d",
+          "expression": "t.xcx_coupon_order_rate_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_order_rate_120d",
+          "expression": "t.xcx_coupon_cost_order_rate_120d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_dau_label_180d",
+          "expression": "t.app_dau_label_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_num_180d",
+          "expression": "t.app_bubble_num_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_num_180d",
+          "expression": "t.app_call_order_num_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_num_180d",
+          "expression": "t.app_finish_order_num_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_max_180d",
+          "expression": "t.app_bubble_dis_max_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_min_180d",
+          "expression": "t.app_bubble_dis_min_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_dis_avg_180d",
+          "expression": "t.app_bubble_dis_avg_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_max_180d",
+          "expression": "t.app_order_dis_max_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_min_180d",
+          "expression": "t.app_order_dis_min_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_order_dis_avg_180d",
+          "expression": "t.app_order_dis_avg_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_count_180d",
+          "expression": "t.app_coupon_count_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_amount_180d",
+          "expression": "t.app_coupon_amount_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_180d",
+          "expression": "t.app_coupon_cost_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_bubble_rate_180d",
+          "expression": "t.app_bubble_rate_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_call_order_rate_180d",
+          "expression": "t.app_call_order_rate_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_finish_order_rate_180d",
+          "expression": "t.app_finish_order_rate_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_order_rate_180d",
+          "expression": "t.app_coupon_order_rate_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_coupon_cost_order_rate_180d",
+          "expression": "t.app_coupon_cost_order_rate_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_dau_label_180d",
+          "expression": "t.xcx_dau_label_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_num_180d",
+          "expression": "t.xcx_bubble_num_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_num_180d",
+          "expression": "t.xcx_call_order_num_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_num_180d",
+          "expression": "t.xcx_finish_order_num_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_max_180d",
+          "expression": "t.xcx_bubble_dis_max_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_min_180d",
+          "expression": "t.xcx_bubble_dis_min_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_dis_avg_180d",
+          "expression": "t.xcx_bubble_dis_avg_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_max_180d",
+          "expression": "t.xcx_order_dis_max_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_min_180d",
+          "expression": "t.xcx_order_dis_min_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_order_dis_avg_180d",
+          "expression": "t.xcx_order_dis_avg_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_count_180d",
+          "expression": "t.xcx_coupon_count_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_amount_180d",
+          "expression": "t.xcx_coupon_amount_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_180d",
+          "expression": "t.xcx_coupon_cost_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_bubble_rate_180d",
+          "expression": "t.xcx_bubble_rate_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_call_order_rate_180d",
+          "expression": "t.xcx_call_order_rate_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_finish_order_rate_180d",
+          "expression": "t.xcx_finish_order_rate_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_order_rate_180d",
+          "expression": "t.xcx_coupon_order_rate_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "xcx_coupon_cost_order_rate_180d",
+          "expression": "t.xcx_coupon_cost_order_rate_180d",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        }
+      ]
+    },
+    {
+      "id": "client_score",
+      "name": "有端",
+      "aliases": [],
+      "source_table": "dm.ut_alg_flowback_msg_outcall_feature_train_di",
+      "source_evidence": "offline_bigdata/script/sqls/v6/feature_v6_train.sql",
+      "lineage_status": "直接来源已核实；上游生产口径及历史可用范围待核实",
+      "snapshot_offset_days": 0,
+      "fields": [
+        {
+          "name": "clue_score",
+          "expression": "t.clue_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "clue_score_rank",
+          "expression": "t.clue_score_rank",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        }
+      ]
+    },
+    {
+      "id": "coupon_sensitivity",
+      "name": "券敏感",
+      "aliases": [],
+      "source_table": "dm.ut_alg_flowback_msg_outcall_feature_train_di",
+      "source_evidence": "offline_bigdata/script/sqls/v6/feature_v6_train.sql",
+      "lineage_status": "直接来源已核实；上游生产口径及历史可用范围待核实",
+      "snapshot_offset_days": 0,
+      "fields": [
+        {
+          "name": "coupon_sensitive",
+          "expression": "t.coupon_sensitive",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        }
+      ]
+    },
+    {
+      "id": "xtlx_order",
+      "name": "新版小天狼星用户订单信息特征",
+      "aliases": [],
+      "source_table": "dm.xtlx_wchs_test_v1",
+      "source_evidence": "offline_bigdata/script/sqls/baseline/feature_baseline_train.sql",
+      "lineage_status": "直接来源已核实；上游生产口径及历史可用范围待核实",
+      "snapshot_offset_days": -1,
+      "fields": [
+        {
+          "name": "call_cnt",
+          "expression": "tt.call_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "cancel_cnt",
+          "expression": "tt.cancel_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "cancel_rate",
+          "expression": "tt.cancel_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "order_cnt",
+          "expression": "tt.order_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "workday_cnt",
+          "expression": "tt.workday_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "weekend_cnt",
+          "expression": "tt.weekend_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "ent_order_rate",
+          "expression": "tt.ent_order_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "call_0_6",
+          "expression": "tt.call_0_6",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "call_6_10",
+          "expression": "tt.call_6_10",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "call_10_14",
+          "expression": "tt.call_10_14",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "call_14_18",
+          "expression": "tt.call_14_18",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "call_18_24",
+          "expression": "tt.call_18_24",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "avg_answer_interval",
+          "expression": "tt.avg_answer_interval",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "max_answer_interval",
+          "expression": "tt.max_answer_interval",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "min_answer_interval",
+          "expression": "tt.min_answer_interval",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "avg_arrive_interval",
+          "expression": "tt.avg_arrive_interval",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "max_arrive_interval",
+          "expression": "tt.max_arrive_interval",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "min_arrive_interval",
+          "expression": "tt.min_arrive_interval",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "max_gmv",
+          "expression": "tt.max_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "min_gmv",
+          "expression": "tt.min_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "total_gmv",
+          "expression": "tt.total_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "cross_city_cnt",
+          "expression": "tt.cross_city_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "offsite_cnt",
+          "expression": "tt.offsite_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "longdis_cnt",
+          "expression": "tt.longdis_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "coupon_cnt",
+          "expression": "tt.coupon_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "coupon_rate",
+          "expression": "tt.coupon_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "total_coupon_amt",
+          "expression": "tt.total_coupon_amt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_subsidy_rate",
+          "expression": "tt.c_subsidy_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "top_scene_l1",
+          "expression": "tt.top_scene_l1",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "top_scene_l2",
+          "expression": "tt.top_scene_l2",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "top_start_city_id",
+          "expression": "tt.top_start_city_id",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "top_dest_city_id",
+          "expression": "tt.top_dest_city_id",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "top_select_type",
+          "expression": "tt.top_select_type",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "w_order_cnt",
+          "expression": "tt.w_order_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "w_order_ratio",
+          "expression": "tt.w_order_ratio",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "w_total_gmv",
+          "expression": "tt.w_total_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "w_avg_gmv",
+          "expression": "tt.w_avg_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "w_total_dis",
+          "expression": "tt.w_total_dis",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "w_avg_dis",
+          "expression": "tt.w_avg_dis",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "w_coupon_rate",
+          "expression": "tt.w_coupon_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "w_c_subsidy_rate",
+          "expression": "tt.w_c_subsidy_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "w_top_call_period",
+          "expression": "tt.w_top_call_period",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "w_top_scene_l1",
+          "expression": "tt.w_top_scene_l1",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_order_cnt",
+          "expression": "tt.c_order_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_order_ratio",
+          "expression": "tt.c_order_ratio",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_total_gmv",
+          "expression": "tt.c_total_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_avg_gmv",
+          "expression": "tt.c_avg_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_total_dis",
+          "expression": "tt.c_total_dis",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_avg_dis",
+          "expression": "tt.c_avg_dis",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_coupon_rate",
+          "expression": "tt.c_coupon_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_c_subsidy_rate",
+          "expression": "tt.c_c_subsidy_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_top_call_period",
+          "expression": "tt.c_top_call_period",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "c_top_scene_l1",
+          "expression": "tt.c_top_scene_l1",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "h_order_cnt",
+          "expression": "tt.h_order_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "h_order_ratio",
+          "expression": "tt.h_order_ratio",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "h_total_gmv",
+          "expression": "tt.h_total_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "h_avg_gmv",
+          "expression": "tt.h_avg_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "h_total_dis",
+          "expression": "tt.h_total_dis",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "h_avg_dis",
+          "expression": "tt.h_avg_dis",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "h_coupon_rate",
+          "expression": "tt.h_coupon_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "h_c_subsidy_rate",
+          "expression": "tt.h_c_subsidy_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "h_top_call_period",
+          "expression": "tt.h_top_call_period",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "h_top_scene_l1",
+          "expression": "tt.h_top_scene_l1",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "s_order_cnt",
+          "expression": "tt.s_order_cnt",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "s_order_ratio",
+          "expression": "tt.s_order_ratio",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "s_total_gmv",
+          "expression": "tt.s_total_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "s_avg_gmv",
+          "expression": "tt.s_avg_gmv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "s_total_dis",
+          "expression": "tt.s_total_dis",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "s_avg_dis",
+          "expression": "tt.s_avg_dis",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "s_coupon_rate",
+          "expression": "tt.s_coupon_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "s_c_subsidy_rate",
+          "expression": "tt.s_c_subsidy_rate",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "s_top_call_period",
+          "expression": "tt.s_top_call_period",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "s_top_scene_l1",
+          "expression": "tt.s_top_scene_l1",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "psg_charge_dist_m_stability",
+          "expression": "tt.psg_charge_dist_m_stability",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "gmv_amt_stability",
+          "expression": "tt.gmv_amt_stability",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "coupon_amt_stability",
+          "expression": "tt.coupon_amt_stability",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "call_period_entropy_score",
+          "expression": "tt.call_period_entropy_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "is_weekend_entropy_score",
+          "expression": "tt.is_weekend_entropy_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "scene_l1_idx_entropy_score",
+          "expression": "tt.scene_l1_idx_entropy_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "scene_l2_idx_entropy_score",
+          "expression": "tt.scene_l2_idx_entropy_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "r",
+          "expression": "tt.r",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "f",
+          "expression": "tt.f",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "m",
+          "expression": "tt.m",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "rfm_score",
+          "expression": "tt.rfm_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "is_use_coupon_score",
+          "expression": "tt.is_use_coupon_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "coupon_amt_score",
+          "expression": "tt.coupon_amt_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "gmv_amt_score",
+          "expression": "tt.gmv_amt_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "cross_city_prefer_wyc",
+          "expression": "tt.cross_city_prefer_wyc",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "cross_city_prefer_wchs",
+          "expression": "tt.cross_city_prefer_wchs",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "longj_prefer_wyc",
+          "expression": "tt.longj_prefer_wyc",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "longj_prefer_wchs",
+          "expression": "tt.longj_prefer_wchs",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "offsite_prefer_wyc",
+          "expression": "tt.offsite_prefer_wyc",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "offsite_prefer_wchs",
+          "expression": "tt.offsite_prefer_wchs",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        }
+      ],
+      "join_template": "assets/blocks/xtlx_order.sql",
+      "source_key": "passenger_id",
+      "source_date": "dt",
+      "join_cardinality": "many_to_one"
+    },
+    {
+      "id": "xtlx_user",
+      "name": "新版小天狼星用户基础属性特征",
+      "aliases": [],
+      "source_table": "dm.xtlx_user_test_v1",
+      "source_evidence": "offline_bigdata/script/sqls/baseline/feature_baseline_train.sql",
+      "lineage_status": "直接来源已核实；上游生产口径及历史可用范围待核实",
+      "snapshot_offset_days": -1,
+      "fields": [
+        {
+          "name": "ct_time",
+          "expression": "ttt.ct_time",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "reg_days",
+          "expression": "ttt.reg_days",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "gender",
+          "expression": "ttt.gender",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "age",
+          "expression": "ttt.age",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "resident_city_id",
+          "expression": "ttt.resident_city_id",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "is_exact_has_car",
+          "expression": "ttt.is_exact_has_car",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "fuel_type",
+          "expression": "ttt.fuel_type",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "driving_age",
+          "expression": "ttt.driving_age",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "car_brand",
+          "expression": "ttt.car_brand",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "car_model_name",
+          "expression": "ttt.car_model_name",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "car_price",
+          "expression": "ttt.car_price",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "is_netcar_finish_driver",
+          "expression": "ttt.is_netcar_finish_driver",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "is_beatles_finish_driver",
+          "expression": "ttt.is_beatles_finish_driver",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "gt_career",
+          "expression": "ttt.gt_career",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "gt_career_type",
+          "expression": "ttt.gt_career_type",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "gt_muying",
+          "expression": "ttt.gt_muying",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "gt_shanglv",
+          "expression": "ttt.gt_shanglv",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "is_driver",
+          "expression": "ttt.is_driver",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "member_level",
+          "expression": "ttt.member_level",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "natural_member_level",
+          "expression": "ttt.natural_member_level",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "artificial_member_level",
+          "expression": "ttt.artificial_member_level",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_last_visit_time",
+          "expression": "ttt.mp_last_visit_time",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_is_7d_dau",
+          "expression": "ttt.mp_is_7d_dau",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_is_30d_dau",
+          "expression": "ttt.mp_is_30d_dau",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_is_90d_dau",
+          "expression": "ttt.mp_is_90d_dau",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_is_180d_dau",
+          "expression": "ttt.mp_is_180d_dau",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_last_visit_time",
+          "expression": "ttt.app_last_visit_time",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "is_app_7d_dau",
+          "expression": "ttt.is_app_7d_dau",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "is_app_30d_dau",
+          "expression": "ttt.is_app_30d_dau",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "is_app_90d_dau",
+          "expression": "ttt.is_app_90d_dau",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "is_app_180d_dau",
+          "expression": "ttt.is_app_180d_dau",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_avg_7d_active_days",
+          "expression": "ttt.app_avg_7d_active_days",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_preferred_time_period",
+          "expression": "ttt.app_preferred_time_period",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_work_rest_preference",
+          "expression": "ttt.app_work_rest_preference",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_continuity",
+          "expression": "ttt.app_continuity",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_cv_score",
+          "expression": "ttt.app_cv_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "app_stable_score",
+          "expression": "ttt.app_stable_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_avg_7d_active_days",
+          "expression": "ttt.mp_avg_7d_active_days",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_preferred_time_period",
+          "expression": "ttt.mp_preferred_time_period",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_work_rest_preference",
+          "expression": "ttt.mp_work_rest_preference",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_continuity",
+          "expression": "ttt.mp_continuity",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_cv_score",
+          "expression": "ttt.mp_cv_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        },
+        {
+          "name": "mp_stable_score",
+          "expression": "ttt.mp_stable_score",
+          "encoding": "lisan",
+          "missing": "preserve NULL; legacy S_slice_binning"
+        }
+      ],
+      "join_template": "assets/blocks/xtlx_user.sql",
+      "source_key": "pid",
+      "source_date": "dt",
+      "join_cardinality": "many_to_one"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "dataset_id": "euen_v5_review_example",
+  "profile": "euen_v6",
+  "feature_blocks": [
+    "sirius画像特征",
+    "补贴环境",
+    "双端特征",
+    "有端",
+    "券敏感"
+  ],
+  "splits": {
+    "train": {
+      "start": "2026-05-11",
+      "end": "2026-08-21"
+    },
+    "valid": {
+      "start": "2026-08-22",
+      "end": "2026-08-27"
+    },
+    "test": {
+      "start": "2026-08-28",
+      "end": "2026-09-10"
+    }
+  },
+  "additional_exclusions": [],
+  "seed": 2026,
+  "sample_fraction": 0.1,
+  "bucket_num": 10,
+  "version": "v5",
+  "exec_date": "2026-09-20"
+}

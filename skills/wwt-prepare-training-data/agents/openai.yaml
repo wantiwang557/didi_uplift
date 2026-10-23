@@ -1,0 +1,4 @@
+interface:
+  display_name: "WWT 训练数据准备"
+  short_description: "按特征块与日期生成训练数据，复用 train 配置抽取 valid/test"
+  default_prompt: "使用 $wwt-prepare-training-data，按我指定的特征块和日期准备 train、valid、test 数据，并提供可追溯的执行与验收结果。"

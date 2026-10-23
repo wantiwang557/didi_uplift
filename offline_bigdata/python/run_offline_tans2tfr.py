@@ -205,6 +205,40 @@ def get_map_func(total_columns_bc, parser_file_name_bc):
                 # 此时 res 不存在了，我们改用记录好的 count 和 sample_data
                 debug_info = "count: {}, sample: {}".format(count, sample_data)
                 raise ValueError("GG! cmd_rc: {}\nDebug: {}\nError_Out: {}".format(rc, debug_info, out))
+            if count > 0 and not libsvm_list:
+                parser_path = parser_file_name_bc.value
+                parser_head = ""
+                feature_list_path = ""
+                feature_list_exists = False
+                feature_list_head = ""
+                if os.path.exists(parser_path):
+                    with open(parser_path, "r") as parser_f:
+                        parser_lines = parser_f.read().splitlines()
+                    parser_head = "\n".join(parser_lines[:5])
+                    for parser_line in parser_lines:
+                        if parser_line.startswith("feature_list="):
+                            feature_list_path = parser_line.split("=", 1)[1].strip()
+                            break
+                if feature_list_path:
+                    feature_list_exists = os.path.exists(feature_list_path)
+                    if feature_list_exists:
+                        with open(feature_list_path, "r") as feature_f:
+                            feature_list_head = "\n".join(feature_f.read().splitlines()[:3])
+                debug_info = {
+                    "cwd": os.getcwd(),
+                    "files": sorted(os.listdir("."))[:30],
+                    "input_count": count,
+                    "input_sample_prefix": sample_data[:1],
+                    "cmd": cmd,
+                    "cmd_rc": rc,
+                    "cmd_out": out,
+                    "parser_exists": os.path.exists(parser_path),
+                    "parser_head": parser_head,
+                    "feature_list_path": feature_list_path,
+                    "feature_list_exists": feature_list_exists,
+                    "feature_list_head": feature_list_head,
+                }
+                raise ValueError("fea_extract输出为空，但输入partition非空: {}".format(debug_info))
 
             # 5. 输出结果整合
             ret_items = []
@@ -301,6 +335,10 @@ def run():
     logging.info("最终结果将写入 {}".format(args.output))
 
     df = spark.sql(sql)
+    raw_count = df.count()
+    logging.info("原始SQL结果行数: {}".format(raw_count))
+    if raw_count == 0:
+        raise ValueError("原始SQL结果为空，请先检查SQL过滤条件、label表数据和join条件。")
 
     tfrecord_fmat = 'tfrecords'
     spark_version = spark.version
@@ -340,9 +378,13 @@ def run():
         map_func
     ).toDF(
         schema
-    )
+    ).cache()
 
     res_df.printSchema()
+    converted_count = res_df.count()
+    logging.info("特征转换后行数: {}".format(converted_count))
+    if converted_count == 0:
+        raise ValueError("特征转换后结果为空，请检查fea_extract、parser.conf和feature_list配置。")
 
     # 4. 落盘
     # py4j.protocol.Py4JJavaError: An error occurred while calling o161.save.

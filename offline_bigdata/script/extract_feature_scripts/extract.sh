@@ -11,7 +11,7 @@ d=$(date -d "$exec_date" +%d)
 # 注意版本
 #feature_verson='25_v4'
 #feature_verson='v0'
-feature_verson='v2'
+feature_verson='v3'
 
 # ------------------------------------------------------------------------------------------------#
 # feature parser stage
@@ -43,19 +43,28 @@ sh ./run_trans2tfr_spark32.sh ${exec_date} ${run_mode} ${parser_file} ${feature_
 echo "clean up..."
 #rm *.conf
 
+
+
+# chmod +x extract.sh
+# nohup ./extract.sh > extract_train_baseline.log 2>&1 &
+# nohup ./extract.sh > extract_train_v3.log 2>&1 &
+# tail -f extract_train_v3.log
+
+
 # 最终结果将写入 /user/prod_growstrategy/tmp/wwt/baseline/train/2026/07/16
+# 最终结果将写入 /user/prod_growstrategy/tmp/wwt/v3/train/2026/08/13
 # 打开存储目录
 # cd /nfs/dataset-ofs-385-143496/yangliu/yangliu_data/tfrecord_cache/euen_010203/
 
 # 检查文件是否存在
-# hdfs dfs -ls /user/prod_growstrategy/tmp/wwt/baseline/train/2026/07/16
+# hdfs dfs -ls /user/prod_growstrategy/tmp/wwt/v3/train/2026/08/13
 #检查文件数量
-# hdfs dfs -ls /user/prod_growstrategy/tmp/wwt/baseline/train/2026/07/16/part-* | wc -l
+# hdfs dfs -ls /user/prod_growstrategy/tmp/wwt/v3/train/2026/08/13/part-* | wc -l
 # 打开存储目录
 # cd /nfs/dataset-ofs-385-143496/yangliu/yangliu_data/tfrecord_cache/euen_010203/
 # # 下载测试集到目标本地文件夹
-# hdfs dfs -get /user/prod_growstrategy/tmp/wwt/baseline/train/2026/07/16/* wwt/baseline/train/
-# 本地统计part分片  ls wwt/baseline/train/part-* | wc -l
+# hdfs dfs -get /user/prod_growstrategy/tmp/wwt/v3/train/2026/08/13/* wwt/v3/train_0511_0722
+# 本地统计part分片  ls wwt/v2/train_0511_0617/part-* | wc -l
 
 
 
@@ -67,12 +76,8 @@ echo "clean up..."
 # mkdir 文件夹名字 (可以按照别人的设计，分别是train 和valid两个相关文件夹)
 # cd 对应目录
 # 拉取hdfsyarn application -status 
+# yarn application -kill application_xxxx_xxxx
 # hdfs dfs -get /user/prod_growstrategy/wwt/v1/train/2025/10/17/* 
 # hdfs dfs -get /user/prod_growstrategy/wwt/v1/test/2026/07/16/*
 # hdfs dfs -rm -r /user/prod_growstrategy/tmp/wwt/26_v2/train/*  只删除该目录下的文件
 
-
-# chmod +x extract.sh
-# nohup ./extract.sh > extract_train_baseline.log 2>&1 &
-# nohup ./extract.sh > extract_train_v2.log 2>&1 &
-# tail -f extract_train_v2.log

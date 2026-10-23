@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="720" viewBox="0 0 1300 720">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .title { font: 700 28px Arial, Helvetica, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 16px Arial, Helvetica, sans-serif; fill: #64748b; }
+      .box-title { font: 700 18px Arial, Helvetica, sans-serif; fill: #0f172a; }
+      .box-text { font: 400 15px Arial, Helvetica, sans-serif; fill: #334155; }
+      .small { font: 400 14px Arial, Helvetica, sans-serif; fill: #334155; }
+      .formula { font: 700 18px Arial, Helvetica, sans-serif; fill: #0f172a; }
+      .line { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .box { stroke: #334155; stroke-width: 2; rx: 10; ry: 10; }
+    </style>
+  </defs>
+
+  <rect width="1300" height="720" fill="#ffffff"/>
+  <text x="650" y="52" text-anchor="middle" class="title">EEUEN Model Architecture</text>
+  <text x="650" y="80" text-anchor="middle" class="subtitle">Shared user representation + exposure decomposition</text>
+
+  <rect x="450" y="115" width="400" height="70" class="box" fill="#f3f6fa"/>
+  <text x="650" y="143" text-anchor="middle" class="box-title">Input Features</text>
+  <text x="650" y="168" text-anchor="middle" class="box-text">473 sparse slots, index/value pairs</text>
+
+  <rect x="450" y="225" width="400" height="70" class="box" fill="#e8f2ff"/>
+  <text x="650" y="253" text-anchor="middle" class="box-title">Index Embedding</text>
+  <text x="650" y="278" text-anchor="middle" class="box-text">user feature embeddings</text>
+
+  <rect x="450" y="335" width="400" height="76" class="box" fill="#dbeafe"/>
+  <text x="650" y="365" text-anchor="middle" class="box-title">Shared Bottom MLP</text>
+  <text x="650" y="391" text-anchor="middle" class="box-text">shared user representation</text>
+
+  <path d="M650 185 L650 225" class="line"/>
+  <path d="M650 295 L650 335" class="line"/>
+
+  <rect x="80" y="470" width="230" height="76" class="box" fill="#eaf7ef"/>
+  <text x="195" y="500" text-anchor="middle" class="box-title">Control Head</text>
+  <text x="195" y="526" text-anchor="middle" class="box-text">predict c(x)</text>
+
+  <rect x="385" y="470" width="230" height="76" class="box" fill="#fff2d9"/>
+  <text x="500" y="500" text-anchor="middle" class="box-title">Exposure Head</text>
+  <text x="500" y="526" text-anchor="middle" class="box-text">predict p_exp(x)</text>
+
+  <rect x="690" y="470" width="260" height="76" class="box" fill="#f0eaff"/>
+  <text x="820" y="500" text-anchor="middle" class="box-title">Uplift Heads</text>
+  <text x="820" y="526" text-anchor="middle" class="box-text">tau_e_1 ~ tau_e_4</text>
+
+  <rect x="1020" y="470" width="230" height="76" class="box" fill="#ffecee"/>
+  <text x="1135" y="500" text-anchor="middle" class="box-title">Cost Heads</text>
+  <text x="1135" y="526" text-anchor="middle" class="box-text">cost_1 ~ cost_4</text>
+
+  <path d="M650 411 C610 440, 330 430, 195 470" class="line"/>
+  <path d="M650 411 C610 440, 535 435, 500 470" class="line"/>
+  <path d="M650 411 C700 440, 780 435, 820 470" class="line"/>
+  <path d="M650 411 C750 440, 1015 430, 1135 470" class="line"/>
+
+  <rect x="675" y="585" width="300" height="82" class="box" fill="#f8fafc"/>
+  <text x="825" y="611" text-anchor="middle" class="box-title">T1 Base Restore</text>
+  <text x="825" y="636" text-anchor="middle" class="small">tau_e_1 = u1</text>
+  <text x="825" y="657" text-anchor="middle" class="small">tau_e_k = u1 + u_k, k=2,3,4</text>
+
+  <rect x="350" y="620" width="440" height="64" class="box" fill="#ecfeff"/>
+  <text x="570" y="647" text-anchor="middle" class="formula">Final uplift score</text>
+  <text x="570" y="671" text-anchor="middle" class="formula">delta_cvr_k = p_exp(x) * tau_e_k</text>
+
+  <path d="M820 546 L820 585" class="line"/>
+  <path d="M500 546 C505 585, 525 600, 555 620" class="line"/>
+  <path d="M825 667 C775 690, 650 694, 590 684" class="line"/>
+
+  <rect x="60" y="610" width="270" height="68" class="box" fill="#f8fafc"/>
+  <text x="195" y="637" text-anchor="middle" class="box-title">Outcome Training</text>
+  <text x="195" y="661" text-anchor="middle" class="small">y_treat = c(x) + delta_cvr_k</text>
+  <path d="M195 546 L195 610" class="line"/>
+  <path d="M350 652 C315 650, 300 646, 330 644" class="line"/>
+
+  <rect x="1000" y="610" width="270" height="68" class="box" fill="#f8fafc"/>
+  <text x="1135" y="637" text-anchor="middle" class="box-title">Cost Output</text>
+  <text x="1135" y="661" text-anchor="middle" class="small">predict cost_k</text>
+  <path d="M1135 546 L1135 610" class="line"/>
+
+  <rect x="80" y="105" width="295" height="84" class="box" fill="#f8fafc"/>
+  <text x="228" y="132" text-anchor="middle" class="box-title">Loss</text>
+  <text x="228" y="157" text-anchor="middle" class="small">outcome MSE + cost MSE</text>
+  <text x="228" y="178" text-anchor="middle" class="small">+ exposure BCE</text>
+
+  <rect x="925" y="105" width="300" height="84" class="box" fill="#f8fafc"/>
+  <text x="1075" y="132" text-anchor="middle" class="box-title">Evaluation</text>
+  <text x="1075" y="157" text-anchor="middle" class="small">mean AUUC, AUUCE</text>
+  <text x="1075" y="178" text-anchor="middle" class="small">exposure AUC/logloss, cost xAUC</text>
+</svg>
